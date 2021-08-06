@@ -1,0 +1,388 @@
+<html>
+<head>
+	<title>Job Application Form</title>
+	<style>
+		body{
+			font-family: "comic sans ms", sans serif;
+			background-color:peru;
+			margin: 0;
+			
+		}
+		
+		h2{
+			background-color: black;
+			color: white;
+			padding: 10px;
+			text-align: center;
+		}
+		td{
+			padding: 7px;
+		}
+		input{
+			height: 30px;
+			border-radius: 10px;
+			border: none;
+			
+		}
+		
+		input:hover{
+			box-shadow: 5px 5px 5px black;
+		}
+		
+		.button{
+			background-color:black;
+			color:#fff;
+			border: none;
+			padding: 7px
+		}
+		
+		.button:hover {
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<h1 align="center">Job Applicatio Form</h1>
+	<form>
+		<div id="personal-details">
+		<h2 align="center">Personal Deatils</h2>
+			<table width="100%">
+				<tr>
+					<td>First Name</td>
+					<td>
+						<input type="text" placeholder="First Name" size="25">
+					</td>
+					<td>Middle Name</td>
+					<td>
+						<input type="text" placeholder="Middle Name" size="25">
+                    </td>
+					<td>Last Name</td>
+					<td>
+						<input type="text" placeholder="Last Name" size="25">
+					</td>
+				</tr>
+				
+				<tr>
+					<td>Date of Birth</td>
+					<td>
+						<input type="date">
+					</td>
+					<td>Place of Birth</td>
+					<td>
+						<input type="text" placeholder="Place of Birth" size="25">
+					</td>
+				</tr>
+				<tr>
+					<td>Select Gender</td>
+					<td>
+						<input type="radio" name="gender" value="male">Male
+				
+						<input type="radio" name="gender" value="feale">Female
+					</td>
+				</tr>
+				<tr>
+					<td><h3><u>Contact Details</u></h3></td>
+				</tr>
+				<tr>
+					<td>Mobile Number</td>
+					<td>
+						<input type="number" placeholder="Enter mobile number" size="25">
+					</td>
+					<td>Email Id</td>
+					<td>
+						<input type="text" placeholder="Enter your Email" size="25">
+					</td>
+				</tr>
+				<tr>
+					<td>Language Known</td>
+					<td>
+						<input type="checkbox" value="english">English
+					
+					
+						<input type="checkbox" value="Hindi">Hindi
+					
+					
+						<input type="checkbox" value="Gujrati">Gujrati
+					</td>
+				</tr>
+				<tr>
+					<td>Your Mother Tongue</td>
+					<td>
+						<select>
+							<option>English</option>
+							<option>Hindi</option>
+							<option>Gujrati</option>
+						</select>
+					</td>
+				</tr>
+				
+			</table>
+		</div>
+		
+		<!-- Address Details -->
+		<div id="address-details">
+		<h3><b><u>Address Details</u></b></h3>
+			<table width="100%">
+				
+				<tr>
+					<td>Nationality</td>
+					<td>
+						<input type="radio" name="gender" value="indian">Indian
+				
+						<input type="radio" name="gender" value="other">Other
+					</td>
+                    <td>select your state</td>
+					<td>
+						<select name="State" id="State">
+                        <option value="Gujrat">Gujrat</option>
+                        <option value="MP">MP</option>
+                        <option value="UP">UP</option>
+                        <option value="Maharastra">Maharastra</option>
+                        <option value="karnataka">karnataka</option>
+                        <option value="Rajsthan">Rajsthan</option>
+                        <option value="Assam">Assam</option>
+                        <option value="Punjab">Punjab</option>
+                    </select>
+					</td>
+                    <td>District</td>
+					<td>
+						<select>
+							<option value="Porbandar">Porbandar</option>
+							<option>Rajkot</option>
+							<option>Ahmedabad</option>
+							<option>Junagadh</option>
+							<option>jamnagar</option>
+							<option>vadodra</option>
+							<option>surat</option>
+							<option>Dwarka</option>
+							<option>Gandhinagar</option>
+							<option>Gondal</option>
+							<option>Mehsana</option>
+							<option>Saputara</option>
+						</select>
+					</td>
+	
+				</tr>
+
+				
+				<tr>
+					<td>Ward GP</td>
+					<td>
+						<input type="text" size="25">
+					</td>
+					<td>Vill / Para / House No / Road:</td>
+					<td>
+						<input type="text" size="25">
+					</td>
+				</tr>
+				<tr>
+					
+					<td>Pin Code</td>
+					<td>
+						<input type="phone" size="25">
+					</td>
+				</tr>
+			</table>
+			<br><br>
+		</div>
+		
+        <!-- Educational Qualification -->
+		<div id="educational-qualification">
+		<h2> Educational Qualification</h2>
+			<table width="100%">
+				<tr>
+					<td>Sl</td>
+					<td>Qualification</td>
+					<td>Instituited / University</td>
+					<td>Year of Passing</td>
+					<td>Marks (%)</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>
+						<input type="text" size="25">
+					</td>
+					<td>
+						<input type="text" size="25">
+					</td>
+					<td>
+						<input type="text" size="25">
+					</td>
+					<td>
+						<input type="text" size="25">
+					</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>
+						<input type="text" size="25">
+					</td>
+					<td>
+						<input type="text" size="25">
+					</td>
+					<td>
+						<input type="text" size="25">
+					</td>
+					<td>
+						<input type="text" size="25">
+					</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>
+						<input type="text" size="25">
+					</td>
+					<td>
+						<input type="text" size="25">
+					</td>
+					<td>
+						<input type="text" size="25">
+					</td>
+					<td>
+						<input type="text" size="25">
+					</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>
+						<input type="text" size="25">
+					</td>
+					<td>
+						<input type="text" size="25">
+					</td>
+					<td>
+						<input type="text" size="25">
+					</td>
+					<td>
+						<input type="text" size="25">
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<!-- Technical Skills -->
+		<div id="Technical-Skills">
+		<h2>Technical-Skills</h2>
+			<table width="100%">
+				<tr>
+					<td>Programming Skills</td>
+					<td>Operating System</td>
+					<td>web designing</td>
+                    <td>Which Technology would you preffer to work?</td>
+				</tr>
+				<tr>
+                    <td>
+                        <input type="checkbox" id="skill1" name="skill1" value="java">
+                        <label for="skill1">java</label>
+
+                        <input type="checkbox" id="skill2" name="skill2" value="c">
+                        <label for="skill2">c</label><br>
+
+                        <input type="checkbox" id="skill3" name="skill3" value="c++">
+                        <label for="skill3">c++</label>
+
+                        <input type="checkbox" id="skill4" name="skill4" value="python">
+                        <label for="skill4">python</label><br>
+
+                        <input type="checkbox" id="skill5" name="skill5" value="java">
+                        <label for="skill5">java</label>
+
+                        <input type="checkbox" id="skill6" name="skill6" value=".Net">
+                        <label for="skill6">.Net</label><br>
+
+                        <input type="checkbox" id="skill7" name="skill7" value="Android">
+                        <label for="skill7">Android</label>
+
+                        <input type="checkbox" id="skill8" name="skill8" value=Ruby">
+                        <label for="skill8">Ruby</label><br>
+
+                    </td>
+	
+					<td>
+                        <input type="checkbox" id="os1" name="os1" value=Windows">
+                        <label for="os1">Windows</label>
+
+                        <input type="checkbox" id="os2" name="os2" value=Linux">
+                        <label for="os2">Linux</label><br>
+
+                        <input type="checkbox" id="os3" name="os3" value=ubantu">
+                        <label for="os4">ubantu</label>
+
+                        <input type="checkbox" id="os4" name="os4" value=Linux">
+                        <label for="os5">Linux</label><br>
+
+                        <input type="checkbox" id="os5" name="os5" value=Mac os">
+                        <label for="os5">Mac os</label>
+
+                        <input type="checkbox" id="os6" name="os6" value=ios">
+                        <label for="skill6">ios</label><br>
+
+                        <input type="checkbox" id="os7" name="os7" value="Dos">
+                        <label for="os7">Dos</label>
+
+                        <input type="checkbox" id="os8" name="os8" value=fedora">
+                        <label for="os8">fedora</label><br>
+					</td>
+                    <td>
+                        <input type="checkbox" id="web1" name="web1" value=html-css-javascript">
+                        <label for="web1">html-css-javascript</label><br>
+
+                        <input type="checkbox" id="web2" name="web2" value=bootstrap">
+                        <label for="web2">bootstrap</label><br>
+
+                        <input type="checkbox" id="web3" name="web3" value=photoshop">
+                        <label for="web3">photoshop</label><br>
+
+                        <input type="checkbox" id="web4" name="web4" value=illustrator">
+                        <label for="web4">illustrator</label><br>
+	
+                    </td>
+                    <td>
+                        <textarea id="area" name="area" rows="8" cols="50">
+                           
+                            </textarea>
+                    </td>
+				</tr>
+				
+			
+				
+			</table>
+		</div>
+		
+		<!-- project Details -->
+		<div id="project-details">
+		<h2>project Details</h2>
+			<table width="100%">
+				<tr>
+                    <td>
+                        Give me your project name and details:
+                      <br>  <textarea id="area" name="area" rows="8" cols="50">
+                           
+                        </textarea>
+                    </td>
+					<td>what type of project you done?
+					
+						<select>
+							<option value="Porbandar">Udp</option>
+							<option>idp</option>
+						</select>
+					</td>
+                    <td>
+                        In which language you done project?
+                        <input type="text name=lang id=lang">
+                    </td>
+                   
+				</tr>
+                <tr>
+					<td></td>
+					<td>
+						<input type="Submit" value="Submit" class="button">
+                        <input type="Reset" value="Reset" class="button">
+					</td>
+				<td></td>
+				</tr>
+			</table>
+		</div>
+	</form>
+</body>
+</html>
