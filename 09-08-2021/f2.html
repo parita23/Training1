@@ -1,0 +1,236 @@
+
+<html>
+
+<head>
+
+
+	<title>task7 for table</title>
+	  
+
+
+
+<style type="text/css">
+	body {
+		font-family:Verdana, Arial, Helvetica, Geneva, Tahoma, sans-serif;
+		font-size:medium;
+		color:black;
+		margin: 5px;
+		background-color: #DEB887;	
+	}
+
+	table, th, td {
+		/*border-collapse: collapse;*/
+		border: 1px solid #000000;
+		background-color: #DEB887;
+		padding: 5px;
+		vertical-align: text-top;
+		vertical-align: top;
+		/*width: 100%;*/
+	}
+		
+	.caption {
+	font-weight: bold;
+}
+
+.subtext {
+	font-size: small;
+}
+
+.pageTitle {
+	font-size: large;
+	font-weight: bold;
+	text-align: center;
+	font-style: italic;
+}
+
+.subTitle {
+	font-size: medium;
+	text-align: center;
+}
+
+.selectField {
+	font-size: medium;
+	width:20ch;
+}
+
+.textAreaField {
+	width: 50ch;
+	font-size: small;
+}
+
+.buttonDiv {
+	margin-top: 20px;
+	margin-right: 20px;
+
+	text-align: left;
+}
+
+.btnDefault, .btnCancel, .btnOther {
+  border-radius: 28px;
+  font-family: Arial;
+  color: black;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 5px;
+  padding:  5px 20px 5px 20px;
+}
+
+.btnDefault {
+	background: blue;
+	color: white;
+ 	border: solid lightblue 2px;
+}
+
+.btnCancel {
+	background: white;
+	color: black;
+ 	border: solid blue 2px;
+}
+
+.bthOther {
+	background: #e6e6e6;
+	color: black;
+ 	border: solid black 2px;
+}
+
+.btnDefault:hover,.btnCancel:hover, .btnOther:hover {
+  background: #fcfc3c;
+  text-decoration: none;
+  color: black;
+}
+
+.btnRadio, .btnCheckbox {
+	margin-left: 5px;
+	font-weight: normal;
+}
+
+</style>
+
+</head>
+
+<body data-kmwindow="660,690">
+
+<div class="pageTitle">KM Custom HTML Form Example Using AppleScript</div>
+<div class="subTitle">(by JMichaelTX)</div>
+<br>
+<form action="#" method="post">
+
+<table cellpadding="10" cellspacing="0" >
+	<tr>
+		<td><div class="caption">Name:</div></td>
+		<td>
+		<input name="ASName" class="input" type="text" id="name" autofocus /></td>
+	</tr>
+	<tr>
+		<td><div class="caption">Email:</div></td>
+		<td >
+		<input name="ASEmail" class="input" type="text" id="email" size="50" /></td>
+	</tr>
+	<tr>
+		<td><div class="caption">Password:</div></td>
+		<td>
+		<input name="ASPW" class="input" type="password" id="password" /></td>
+	</tr>
+	<tr>
+		<td>
+		<div class="caption">Approval Required:</div>
+		<div class="subtext">
+			Click on the button or text to check/uncheck.
+		</div>
+		</td>
+		<td>
+			<label><input name="ASCheckbox" class="input" type="checkbox" id="checkbox" />
+			<span class="btnCheckbox">Do you approve?</span></label>
+		</td>
+	</tr>
+	
+	<tr>
+		<td>
+		<div class="caption">Pick Your Favorite:</div>
+		<div class="subtext">
+			Click on the button or text to select.
+		</div>
+		</td>
+		
+		<td>
+			<div>
+				<label><input name="ASRadio" class="input" type="radio" value="A" checked="yes" id="radio1" />
+				<span class="btnRadio">Choice A</span></label>
+			</div>
+			<div>
+				<label><input name="ASRadio" class="input" type="radio" value="B" id="radio2" />
+				<span class="btnRadio">Choice B</span></label>
+			</div>
+			<div>
+				<label><input name="ASRadio" class="input" type="radio" value="C" id="radio3" />
+				<span class="btnRadio">Choice C</span></label>
+			</div>
+		</td>
+	</tr>
+	
+	<tr>
+		<td><div class="caption">Popup Menu:</div></td>
+		<td>
+		<select class="selectField" name="ASPopup"  > 
+		  <option value="CA" >California -- CA</option>
+		  <option value="CO" >Colorado -- CO</option>
+		  <option value="CN" >Connecticut -- CN</option>
+		  <option value="DA" >Dalifornia -- DA</option>
+		  <option value="DO" >Dolorado -- DO</option>
+		  <option value="TX" >Texas -- TX</option>
+		</select>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<div class="caption">List</div>
+		<div class="subtext">
+			Setup Options:<br>
+			&nbsp;&nbsp;&bull; Number of rows to display<br>
+			&nbsp;&nbsp;&bull; Allow Multi-select
+		</div>
+		</td>
+		<td>
+		<select class="selectField" name="ASSelection" multiple="yes" size="5" > 
+		  <option value="CA" >California -- CA</option>
+		  <option value="CO" >Colorado -- CO</option>
+		  <option value="CN" >Connecticut -- CN</option>
+		  <option value="DA" >Dalifornia -- DA</option>
+		  <option value="DO" >Dolorado -- DO</option>
+		  <option value="TX" >Texas -- TX</option>
+		</select>
+		</td>
+	</tr>
+	<tr>
+		<td><div class="caption">Field Ignored by KM</div></td>
+		<td><input name="ASIgnored" class="input" type="text" id="ignored" data-kmignore /></td>
+	</tr>
+	<tr>
+		<td><div class="caption">Text Area</div></td>
+		<td><textarea class="textAreaField" rows="4" name="ASMessage" id="message" rows="5"></textarea></td>
+	</tr>
+</table>
+
+
+	
+	<div class="buttonDiv">
+		<button class="btnDefault"  name="Save" type="submit"
+		title="Press RETURN to submit" 	
+		onclick="window.KeyboardMaestro.Submit('Save')">Save</button>
+		
+		<button class="btnCancel"  name="Cancel" type="button" 
+		title="Press ESC to cancel" 
+		onclick="window.KeyboardMaestro.Cancel('Cancel')">Cancel</button> 
+		
+		<button class="btnOther" name="Resize" type="button" 
+		onclick="window.KeyboardMaestro.ResizeWindow('SCREEN(Main,Left,20%),SCREEN(Main,Top,20%),500,800')">Resize</button> 
+		
+	</div>
+
+</form>
+
+
+</body>
+
+</html>
