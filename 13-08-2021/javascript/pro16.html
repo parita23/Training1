@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>logical operator</title>
+    </head>
+    <script>
+        //Take 3 numbers and find smallest number using logical operator.
+        function logicalOperator(){
+            var a=prompt("Enter Number 1");
+            var b=prompt("Enter Number 2");
+            var c=prompt("Enter Number 3");
+
+            document.write("value of number 1 is : "+a+"<br>");
+            document.write("value of number 2 is : "+b+"<br>");
+            document.write("value of number 3 is : "+c+"<br>");
+            if (a <= b && a <= c)
+                document.write(a+" is the smallest number");
+            else if (b <= a && b <= c)
+                document.write(b+" is the smallest number");
+ 
+            else
+            document.write(c+" is the smallest number");
+        }
+    </script>
+    <body>
+        <p>Take 3 numbers and find smallest number using logical operator.</p>
+        <input type="button" onclick="logicalOperator()" value="Show prompt box" />
+    </body>
+</html>

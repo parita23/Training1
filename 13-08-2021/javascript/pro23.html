@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <title>sum of natural number</title>
+    </head>
+    <script>
+        /*5 numbers and calculate percentage. According to that percentage print grade.
+            If marks <50 then Grade is F.
+            if marks >=50 <60 then Grade is D.
+            if marks >=60 <70 then Grade is C.
+            if marks >=70 <80 then Grade is B.
+            if marks >=80 <90 then Grade is A.
+            if marks >=90 then Grade is A+*/
+
+        function calculatePercentage(){
+            var m1=prompt("Enter your marks1");
+            var m2=prompt("Enter your marks2");
+            var m3=prompt("Enter your marks3");
+            var m4=prompt("Enter your marks4");
+            var m5=prompt("Enter your marks5");
+
+	
+	
+	
+i
+	var total= Number(m1)+Number(m2)+Number(m3)+Number(m4)+Number(m5);
+	document.write("total marks is "+total+"<br>");
+	var per = (total/500)*100;
+	
+	document.write("percentage is "+per+"<br>");
+	
+    if(per<0 || per>100)
+    {
+        document.write("Wrong Entry");
+    }
+    else if(per<50)
+    {
+        document.write("Grade F");
+    }
+    else if(per>=50 && per<60)
+    {
+        document.write("Grade D");
+    }
+    else if(per>=60 && per<70)
+    {
+        document.write("Grade C");
+    }
+    else if(per>=70 && per<80)
+    {
+        document.write("Grade B");
+    }
+    else if(per>=80 && per<90)
+    {
+        document.write("Grade A");
+    }
+    else
+    {
+        document.write("Grade A+");
+    }
+}
+        
+    </script>
+    <body>
+        <p>calculate Percentage</p>
+        <input type="button" onclick="calculatePercentage()" value="Show prompt box" />
+    </body>
+</html>

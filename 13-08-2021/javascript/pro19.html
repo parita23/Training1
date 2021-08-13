@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>multiplication</title>
+    </head>
+    <script>
+        //Take a number from the user. Take starting number & ending number from the user. Generate multiplication table of that number.
+        function multiplicationTable(){
+            var num1=prompt("Enter integer number");
+            var start=prompt("Enter starting number");
+            var end=prompt("Enter ending number");
+
+           
+               for(let i = start; i <= end; i++) {
+                const result = i * num1;
+                console.log(`${num1} * ${i} = ${result}`);
+}
+        }
+    </script>
+    <body>
+        <p>Take a number from the user. Take starting number & ending number from the user. Generate multiplication table of that number.</p>
+        <input type="button" onclick="multiplicationTable()" value="Show prompt box" />
+    </body>
+</html>

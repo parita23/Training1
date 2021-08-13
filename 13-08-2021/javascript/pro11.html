@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>smallest</title>
+    </head>
+    <script>
+        //take two numbers and find smallest number
+        function smallest(){
+            var a=prompt("Enter number 1");
+            var b=prompt("Enter number 2");
+            document.write("value of a is"+a+"<br>");
+            document.write("value of b is"+b+"<br>");
+            if(a < b)
+            {
+            document.write(a+" is the Smallest number");
+            }
+            else if(a > b)
+            {
+            document.write(b+" is the Smallest number");
+            }
+            else
+            {
+            document.write("Both are equal");
+            }
+
+        }
+    </script>
+    <body>
+        <p>take two numbers and find smallest number</p>
+        <input type="button" onclick="smallest()" value="Show prompt box" />
+    </body>
+</html>

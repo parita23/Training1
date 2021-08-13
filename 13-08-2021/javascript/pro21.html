@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>display alphabet</title>
+    </head>
+    <script>
+        //Write a program to display Alphabets.
+        function displayAlphabet(){
+    var c=prompt("Enter  to display uppercase alphabets.");
+
+                    let i;
+                // Display the alphabets
+                document.write("The Alphabets from A" +
+                                " to Z are: " + "</br>");
+                
+                // Traverse each character
+                // with the help of for loop
+                for(i = 'A'.charCodeAt();
+                    i <= 'Z'.charCodeAt(); i++)
+                {
+                    
+                    // Print the alphabet
+                    document.write(
+                        String.fromCharCode(i)  + " "+"<br>");
+                }
+                var c=prompt("Enter  to display lowercase alphabets.");
+    
+                    let j;
+                // Display the alphabets
+                document.write("The Alphabets from a" +
+                                " to z are: " + "</br>");
+                
+                // Traverse each character
+                // with the help of for loop
+                for(j = 'a'.charCodeAt();
+                    j <= 'z'.charCodeAt(); j++)
+                {
+                    
+                    // Print the alphabet
+                    document.write(
+                        String.fromCharCode(j)  + " ");
+                }
+
+
+        }
+    </script>
+    <body>
+        <p>	Write a program to display Alphabets.</p>
+        <input type="button" onclick="displayAlphabet()" value="Show prompt box" />
+    </body>
+</html>

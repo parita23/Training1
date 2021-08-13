@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Gratest Number</title>
+    </head>
+    <script>
+        //Take 2 numbers and display greatest number.(Also check equal number condition)
+        function gratest(){
+            var a=prompt("Enter Number 1");
+            var b=prompt("Enter Number 2");
+            if(a>b){
+                document.write(" the" +a+ "is grater than"+b);
+            }
+            else if(a==b){
+                document.write("both"+a+" and" +b+ "are same");
+            }
+            else{
+                document.write(" the" +b+ "is small than"+a);
+            }
+        }
+    </script>
+    <body>
+        <p>Take 2 numbers and display greatest number.(Also check equal number condition)</p>
+        <input type="button" onclick="gratest()" value="Show prompt box" />
+    </body>
+</html>

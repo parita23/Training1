@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>alphabet</title>
+    </head>
+    <script>
+        //Write a program to check whether character is alphabet or not.
+        function alphabet(){
+            var c=prompt("Enter any Number or character");
+            if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+                document.write(c+" is an alphabet.");
+            else
+                document.write(c+" is not an alphabet.");    
+        }
+    </script>
+    <body>
+        <p>Write a program to check whether character is alphabet or not.</p>
+        <input type="button" onclick="alphabet()" value="Show prompt box" />
+    </body>
+</html>

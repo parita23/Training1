@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>threeGratestNumber</title>
+    </head>
+    <script>
+        //Take 3 numbers and find greatest number using nested IF….ELSE statement.
+        function threeGratestNumber(){
+            var n1=prompt("Enter number 1");
+            var n2=prompt("Enter number 2");
+            var n3=prompt("Enter number 3");
+            document.write("value of number 1 is : "+n1+"<br>");
+            document.write("value of number 2 is : "+n2+"<br>");
+            document.write("value of number 3 is : "+n3+"<br>");
+            if (n1 >= n2) {
+        if (n1 >= n3)
+            document.write(n1+" is the largest number");
+        else
+            document.write(n3+"  is the largest number.");
+    } else {
+        if (n2 >= n3)
+            document.write(n2+" is the largest number.");
+        else
+            document.write(n3+" is the largest number.");
+    }
+        }
+    </script>
+    <body>
+        <p>Take 3 numbers and find greatest number using nested IF….ELSE statement.</p>
+        <input type="button" onclick="threeGratestNumber()" value="Show prompt box" />
+    </body>
+</html>

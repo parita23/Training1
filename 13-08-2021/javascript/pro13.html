@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>square of  number</title>
+    </head>
+    <script>
+        //Take a number to print the square of a number if it is less than 10.
+        function square(){
+            var num=prompt("Enter the number");
+            if(num<10)
+            {
+                var c=num*num;
+                document.write("Squre of "+num+" is "+ c);
+
+            }
+            else
+            {
+                document.write(num + " is greater than 10");
+            }
+        }
+    </script>
+    <body>
+        <p>Take a number to print the square of a number if it is less than 10.</p>
+        <input type="button" onclick="square()" value="Show prompt box" />
+    </body>
+</html>

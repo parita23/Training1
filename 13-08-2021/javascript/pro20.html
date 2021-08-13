@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>sum of natural number</title>
+    </head>
+    <script>
+        //Take a number and calculate sum of natural numbers.
+        function naturalNumbers(){
+           var num=prompt("Enter the number");
+           var sum=0;
+           for(var i=0;i<=num;i++)
+           {
+                sum =sum+i;
+           }
+           document.write("sum is : "+sum);
+        }
+    </script>
+    <body>
+        <p>Take a number and calculate sum of natural numbers.</p>
+        <input type="button" onclick="naturalNumbers()" value="Show prompt box" />
+    </body>
+</html>

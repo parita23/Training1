@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>leap year</title>
+    </head>
+    <script>
+        //Take a year and check whether it is leap year or not
+        function leapornot(){
+            var year=prompt("Enter year");
+            if(year%400==0)
+            {
+                document.write("It is leap year");
+            }
+            else if(year%100==0)
+            {
+                document.write("It is not leap year");
+            }
+            else if(year%4==0)
+            {
+                document.write("It is leap year");
+            }
+            else
+            {
+                document.write("It is not leap year");
+            }
+        }
+    </script>
+    <body>
+        <p> a year and check whether it is leap year or not</p>
+        <input type="button" onclick="leapornot()" value="Show prompt box" />
+    </body>
+</html>

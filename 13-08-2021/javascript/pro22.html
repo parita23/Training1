@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>calculator</title>
+    </head>
+    <script>
+        /*	Make a simple calculator using switch case.
+            a.	1.Addition
+            b.	2.Subtraction
+            c.	3.Multiplication
+            d.	4.Division*/
+
+        function calculator(){
+            const operator = prompt('Enter operator ( either +, -, * or / ): ');
+            const number1 = prompt('Enter first number: ');
+            const number2 = prompt('Enter second number: ');
+
+switch(operator) {
+    case '+':
+         result = number1 + number2;
+        console.log(`${number1} + ${number2} = ${result}`);
+        break;
+
+    case '-':
+         result = number1 - number2;
+        console.log(`${number1} - ${number2} = ${result}`);
+        break;
+
+    case '*':
+         result = number1 * number2;
+        console.log(`${number1} * ${number2} = ${result}`);
+        break;
+
+    case '/':
+         result = number1 / number2;
+        console.log(`${number1} / ${number2} = ${result}`);
+        break;
+
+    default:
+        console.log('Invalid operator');
+        break;
+}
+        }
+    </script>
+    <body>
+        <p>calculator using switch case</p>
+        <input type="button" onclick="calculator()" value="Show prompt box" />
+    </body>
+</html>

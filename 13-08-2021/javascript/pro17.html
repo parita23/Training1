@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>swap without 3rd variable</title>
+    </head>
+    <script>
+        //Write a program to swap 2 numbers without taking third variable.
+        function swap(){
+            var a = prompt("Enter the first variable: ");
+            var b = prompt("Enter the second variable: ");
+
+            document.write("Value of a before swap is"+a+"<br>");
+            document.write("Value of b before swap is"+b+"<br>");
+    
+            //a=a+b;   
+            //b=a-b; 
+            //a=a-b;
+            a=a*b;    
+            b=a/b;   
+            a=a/b;
+
+            document.write("After swap value of b is: "+b+"<br>");
+            document.write("After swap value of a is: "+a);
+
+        }
+    </script>
+    <body>
+        <p>Write a program to swap 2 numbers without taking third variable.</p>
+        <input type="button" onclick="swap()" value="Show prompt box" />
+    </body>
+</html>

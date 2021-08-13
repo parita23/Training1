@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>factorial</title>
+    </head>
+    <script>
+        //Take a number and find factorial of that number.
+        function factorial(){
+           var num=prompt("Enter the number");
+           
+  var fact = 1;
+  if (num == 0 || num == 1){
+    return fact;
+  }else{
+    for(var i = num; i >= 1; i--){
+      fact = fact * i;
+    }
+    document.write("Factorial of"+num+"is" +fact);
+  }  
+        }
+        
+    </script>
+    <body>
+        <p>Take a number and find factorial of that number.</p>
+        <input type="button" onclick="factorial()" value="Show prompt box" />
+    </body>
+</html>

@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>swap two numbers</title>
+    </head>
+    <script>
+        //swap two numbers using third variable
+        function swap(){
+            var a = prompt('Enter the first variable: ');
+            var b = prompt('Enter the second variable: ');
+
+            document.write("Value of a before swap is"+a+"<br>");
+            document.write("Value of b before swap is"+b+"<br>");
+            var temp;
+
+
+            temp = a;
+            a = b;
+            b = temp;
+
+document.write("After swap value of a is: "+a+"<br>");
+document.write("After swap value of b is: "+b);
+
+        }
+    </script>
+    <body>
+        <p>swap two numbers using third variable</p>
+        <input type="button" onclick="swap()" value="Show prompt box" />
+    </body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>less than 100 and even odd</title>
+    </head>
+    <script>
+        //Take a number check if a number is less than 100 or not. If it is less than 100 then check if it is odd or even.
+        function lessThanHundredEvenodd(){
+            var num=prompt("Enter the number");
+            if(num<100){
+                document.write(num + " less than hundred"+"<br>");
+                if(num%2==0)
+                {
+                    document.write(num + " Even number");
+                }
+                else{
+                    document.write(num + " odd number");
+                }
+            }
+            else{
+                document.write(num + " Greater than hundred");
+            }
+        }
+    </script>
+    <body>
+        <p>Take a number check if a number is less than 100 or not. If it is less than 100 then check if it is odd or even.</p>
+        <input type="button" onclick="lessThanHundredEvenodd()" value="Show prompt box" />
+    </body>
+</html>

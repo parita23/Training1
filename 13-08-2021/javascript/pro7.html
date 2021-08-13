@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>zero positive or negative</title>
+    </head>
+    <script>
+        //Take a number and check whether it is zero, positive or negative.
+        function zeroPositiveNegative(){
+            var num=prompt("Enter number");
+            if(num==0){
+                document.write("The number is zero");
+            }
+            else if(num>0)
+            {
+                document.write("The given number is positive");
+            }
+            else{
+                document.write("The given number is negative");
+            }
+        }
+    </script>
+    <body>
+        <p>check zero postive or negative</p>
+        <input type="button" onclick="zeroPositiveNegative()" value="Show prompt box" />
+    </body>
+</html>
