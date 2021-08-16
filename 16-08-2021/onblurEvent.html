@@ -1,0 +1,19 @@
+<html>
+<head>
+<script type="text/javascript">
+function myFunction()
+{
+frm.nm.value=frm.nm.value.toUpperCase();
+frm.nm.style.backgroundColor="red";
+frm.nm.style.color="yellow";
+}
+</script>
+</head>
+<body>
+<form name="frm">
+Enter your name: <input type="text" id="fname" name="nm" onblur="myFunction()">
+<br><br>
+<input type="submit" value="Submit Data" >
+</form>
+</body>
+</html>

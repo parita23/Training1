@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //find() return only first match value when it match then it not check remaining.
+        var a=[1,23,44,55];
+        document.write(a+ "<br><br>");
+        var b=a.findIndex(checkAdult);
+        document.write(b+ "<br><br>");
+
+        function checkAdult(age)
+        {
+            return age>=18;
+        }
+    </script>
+</body>
+</html>

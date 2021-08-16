@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a=[1,33,66,77];
+        document.write(a+"<br>");
+        //some
+        var b=a.some(demo);
+        document.write(b+"<br>");
+        function demo(age)
+        {
+            return age>=2;
+        }
+        //every
+        var b=a.every(demo);
+        document.write(b+"<br>");
+        function demo(age)
+        {
+            return age>=2;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Demo</title>
+</head>
+<body>
+    <script>
+        //length
+        var a="javascript is a great language";
+        var b=a.length;
+        document.write(b+"<br>");
+        //toLowerCase
+        var a="JAVAascript is a great language";
+        var b=a.toLowerCase();
+        document.write(b+"<br>");
+
+         //toUpperCase
+         var a="JAVAascript is a great language";
+        var b=a.toUpperCase();
+        document.write(b+"<br>");
+
+         //includes
+         var a="JAVAascript is a great language";
+        var b=a.includes("is");
+        document.write(b+"<br>");
+
+         //start with
+         var a="JAVAascript is a great language";
+        var b=a.startsWith("JAVA");
+        document.write(b+"<br>");
+
+         //ends with
+         var a="JAVAascript is a great language";
+        var b=a.endsWith("language");
+        document.write(b+"<br>");
+        
+         //search
+         var a="JAVAascript is a great language";
+        var b=a.search("is");
+        document.write(b+"<br>");
+
+         //match
+         var a="JAVAascript is a is great language";
+        var b=a.match(/is/g);
+        document.write(b+"<br>");
+
+         //indexof
+         var a="JAVAascript is a great language";
+        var b=a.indexOf("is");
+        document.write(b+"<br>");
+
+         //last index of
+         var a="JAVAascript is a great language";
+        var b=a.lastIndexOf("great");
+        document.write(b+"<br>");
+
+         //replace
+         var a="JAVAascript is a great language";
+        var b=a.replace("JAVAascript","php");
+        document.write(b+"<br>");
+
+        //trim
+        var a="       JAVAascript is a great language   ";
+        var b=a.trim();
+        document.write(b+"<br>");
+
+        //charAt
+        var a="JAVAascript is a great language";
+        var b=a.charAt("3");
+        document.write(b+"<br>");
+
+        //charcodeAt
+        var a="JAVAascript is a great language";
+        var b=a.charCodeAt("J");
+        document.write(b+"<br>");
+
+        //fromCharCode
+        //var a="JAVAascript is a great language";
+        var b=String.fromCharCode(65);
+        document.write(b+"<br>");
+
+        //concat
+        var a="JAVAascript is a great language";
+        var b=a.concat("hello");
+        document.write(b+"<br>");
+
+        //split divide every words and charcter 
+        var a="JAVAascript is a great language";
+        var b=a.split(" ");
+        document.write(b+"<br>");
+
+        //repeate
+        var a="JAVAascript is a great language";
+        var b=a.repeat(2);
+        document.write(b+"<br>");
+
+        //slice function peek the word from between
+        var a="JAVAascript is a great language";
+        var b=a.slice(3,6);
+        document.write(b+"<br>");
+
+        //substr return number of words
+        var a="JAVAascript is a great language";
+        var b=a.substr(2,5);
+        document.write(b+"<br>");
+
+        //substring
+        var a="JAVAascript is a great language";
+        var b=a.substring(2,7);
+        document.write(b+"<br>");
+
+        //tostring
+        var a=123;
+        var b=a.toString();
+        document.write(b+"<br>");
+
+        //valueOf
+        var a="JAVAascript is a great language";
+        var b=a.valueOf();
+        document.write(b+"<br>");
+        
+    </script>
+</body>
+</html>
