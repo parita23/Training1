@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object demo</title>
+</head>
+<body>
+    <script>
+        var a={
+            fname : 'parita',
+            lname : 'ganatra',
+            age : 22,
+            Email : 'pariganatra232@gmail.com',
+            favMovie : ['dhoom','hum','jadoo'],
+            salary : function(){
+                return 25000;
+            },
+            FullName : function(){
+                return this.fname +" "+ this.lname;
+            },
+            living : {
+                'city' : 'pbr',
+                'state' : 'Gujrat'
+            }
+        }
+        document.write(a.living.city);
+        document.write(a.FullName());
+        document.write(a.salary());
+        document.write(a.fname);
+        document.write(a.favMovie+"<br><br>");
+        console.log(a);
+        //second method to create object
+        var dummy=new Object();
+        
+        dummy.firstName='pari';
+        dummy.lastName='ganatra';
+        dummy.age=22;
+        dummy.city='porbandar';
+        document.write(dummy.age+"<br><br>");
+
+        //array of object
+
+        var abc=[
+            {firstName:'pariiii',age:15},
+            {firstName:'rita',age:55},
+            {firstName:'usha',age:11}
+        ]
+        //document.write(abc);
+        for(var i=0;i<abc.length;i++)
+        {
+            document.write(abc[i].firstName+" "+abc[i].age+"<br>");
+        }
+    </script>
+</body>
+</html>

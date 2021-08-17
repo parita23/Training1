@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object Add value</title>
+</head>
+<body>
+    <script>
+        var person = {
+        name: "Akash",
+        age: 30,
+        gender: "Male"
+        };
+        //Add New Value
+        person.country = "India";
+        // Iterating over object properties
+        for(var i in person) {
+        document.write(person[i] + "<br>"); // Prints: name, age and gender Country
+        }
+        </script>
+</body>
+</html>
