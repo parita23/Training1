@@ -1,0 +1,30 @@
+<html>
+<head>
+<script>
+console.log('Start');
+function set()
+{
+    localStorage.setItem("counter",0);
+    var n = localStorage.getItem('counter');
+    
+    console.log(n);
+    document.getElementById("local").innerHTML=n;
+}
+function test()
+{
+    var n = localStorage.getItem('counter');
+n++;
+
+console.log(n);
+document.getElementById("local").innerHTML=n;
+localStorage.setItem("counter", n);
+console.log('End');
+
+}
+</script>
+</head>
+<body onload="set()">
+    <span id="local">
+    </span><button onclick="test()">Click me</button>
+</body>
+</html>

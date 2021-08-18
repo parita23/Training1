@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+   
+var items = JSON.parse(localStorage.getItem('todo-list')) || [];
+
+// function to add item to the items array
+function addItem() {
+  // get the value of the input box with querySelector
+  var inputBox = document.querySelector('#todo-input');
+  var item = inputBox.value
+  
+  
+  if (item === "")
+    return alert("Please filll list in the textbox!!");
+
+  // If input is valid, add item to items array
+  items.push({
+    value: item
+    
+  })
+  
+  // then convert to a string with JSON.stringify and save to localStorage
+  localStorage.setItem('todo-list', JSON.stringify(items));
+  var ul2=document.getElementById("list-items");
+  const li2 = document.createElement("li");
+                const node = document.createTextNode(item);
+                li2.appendChild(node);
+                          
+                ul2.appendChild(li2);
+  ul2.appendChild(li2);
+  
+  
+  inputBox.value = "";
+}
+
+
+
+
+
+
+
+function Entry() {
+  
+  for (var i = 0; i < items.length; i++) {
+   
+    
+    var ul1=document.getElementById("list-items");
+                const li1 = document.createElement("li");
+                const node = document.createTextNode(items[i].value);
+                li1.appendChild(node);
+                          
+                ul1.appendChild(li1);
+   
+  }
+  
+}
+
+
+    </script>
+</head>
+
+<body onload="Entry()">
+    
+
+      Data:
+      <span><input id="todo-input" type="text" /></span>
+    
+      <button onclick="addItem()" class="button expanded">Submit</button>
+    
+  <ul id="list-items">
+  </ul>
+  
+
+    
+</body>
+</html>

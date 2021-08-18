@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <script>
+           
+            function test()
+            {
+                var n=document.getElementById("txt1").value;
+                if(n===""){
+                    alert("Please enter something!!!!");
+                }
+                else{
+                    var ul1=document.getElementById("items");
+                const li1 = document.createElement("li");
+                const node = document.createTextNode(n);
+                li1.appendChild(node);
+              
+                 
+                  ul1.appendChild(li1);
+                  document.getElementById("txt1").value="";
+
+                }
+               
+                
+                
+            }
+        </script>
+    </head>
+    <body>
+        
+            Data:
+            <span><input type="text" id="txt1" name="txt1"></span>
+            <button onclick="test()">Click</button>
+        
+        <ul id="items">
+        
+        </ul>
+    </body>
+</html>
