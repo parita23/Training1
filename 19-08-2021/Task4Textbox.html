@@ -1,0 +1,93 @@
+<html>
+    <head>
+
+        <script>
+            function textbox1() {
+            var x = document.getElementById("txt1");
+            x.value = x.value.toUpperCase();
+            x.style.backgroundColor="red";
+
+                }           
+            function textbox2(x) {
+            x.style.background = "yellow";
+            }
+            function textbox3() {
+                     document.getElementById("demo").innerHTML = "You selected some text";
+                }       
+                function textbox4() {
+
+                alert("You pressed a key inside the input field");
+                txt4.style.backgroundColor="green";
+                }
+                function textbox5() {
+                        alert("You pressed a key inside the input field");
+                        }
+                        function textbox6() {
+                        var x = document.getElementById("txt6");
+                        x.value = x.value.toUpperCase();      
+                        }
+                      function  textbox7(x)
+                      {
+                        //var x=document.getElementById("txt7");
+                        x.style.background="black";
+                      }
+                      function textbox8() {
+
+                            alert("You pressed a key inside the input field");
+                            txt8.style.backgroundColor="gray";
+                            }
+                            function textbox9() {
+                                    alert("You pressed a key inside the input field");
+                                    }
+                                    function textbox10() {
+                                
+                                    var x = document.getElementById("txt10");
+                                    x.value = x.value.toUpperCase(); 
+                                    x.style.background="blue"     
+        }
+        function finish()
+        {
+           sub.alert("your data is sucessfully submited");
+        }
+                
+
+                        </script>
+    </head>
+    <body bgcolor="pink">
+        <form action="">
+            <label for="fname">TextBox 1:</label>
+            <input type="text" id="txt1" name="name1" onblur="textbox1()"><br><br>
+
+            <label for="lname">TextBox 2:</label>
+            <input type="text" id="txt2" name="name2" onfocus="textbox2(this)" ><br><br>
+            
+            <label for="lname">TextBox 3:</label>
+            <input type="text" id="txt3" name="name3"  value="Hello world!" onselect="textbox3()"><br><br>
+
+            <p id="demo"></p>
+            
+            <label for="lname">TextBox 4:</label>
+            <input type="text" id="txt4" name="name4" onkeydown="textbox4()"><br><br>
+            
+            <label for="lname">TextBox 5:</label>
+            <input type="text" id="txt5" name="name5" onkeypress="textbox5()"><br><br>
+            
+            <label for="lname">TextBox 6:</label>
+            <input type="text" id="txt6" name="name6" onkeyup="textbox6()"><br><br>
+            
+            <label for="lname">TextBox 7:</label>
+            <input type="text" id="txt7" name="name7" onfocus="textbox7(this)"><br><br>
+            
+            <label for="lname">TextBox 8:</label>
+            <input type="text" id="txt8" name="name8" onkeydown="textbox8()"><br><br>
+            
+            <label for="lname">TextBox 9:</label>
+            <input type="text" id="txt9" name="name9" onkeypress="textbox9()"><br><br>
+            
+            <label for="lname">TextBox 10:</label>
+            <input type="text" id="txt10" name="name10" onkeyup="textbox10()"><br><br>
+            
+            <input type="submit" value="Submit" id="sub" onsubmit="finish()">
+          </form>
+    </body>
+</html>

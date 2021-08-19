@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <script>
+            function test()
+            {
+               var a= document.getElementById("image1");
+               if(a.src.match("images/image1.jpg")){
+                   a.src="images/image2.jpg";
+               }
+               else if(a.src.match("images/image2.jpg")){
+                   a.src="images/image3.jpg";
+               }
+               else if(a.src.match("images/image3.jpg"))
+               {
+                a.src="images/image4.jpg";
+               }
+               else if(a.src.match("images/image4.jpg"))
+               {
+                a.src="images/image5.jpg";
+               }
+               else{
+                a.src="images/image1.jpg";
+               }
+            }
+           
+        </script>
+    </head>
+    <body>
+        <img src="images/image1.jpg" id="image1" alt="hello" height="50%" width="50%" onmouseover="test()">
+       <!-- <img src="images/image2.jpg" id="image2" alt="hello" height="50%" width="50%">
+        <img src="images/image3.jpg" id="image3" alt="hello" height="50%" width="50%">
+        <img src="images/image4.jpg" id="image4" alt="hello" height="50%" width="50%">
+        <img src="images/image5.jpg" id="image5" alt="hello" height="50%" width="50%">-->
+    </body>
+</html>

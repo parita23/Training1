@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  
+    <style>
+      #demo1{
+        background-color: tomato;
+        color: white;
+        border: 2px solid black;
+        margin: 20px;
+        padding: 20px;
+      }
+    </style>
+  
+<body>
+  
+<div id="demo1">
+<p id="demo">Click anywhere in the document to change its background color.</p>
+
+
+<h1>Hello</h1>
+
+</div>
+
+
+<script>
+document.getElementById("demo1").addEventListener("click", function(){
+  document.getElementById("demo1").style.backgroundColor = "red";
+   document.getElementById("demo").style.fontSize = "46px";
+   document.getElementById("demo").style.fontFamily = "cursive";
+});
+document.getElementById("demo1").addEventListener("dblclick", function(){
+  document.getElementById("demo1").style.backgroundColor = "blue";
+  document.getElementById("demo").style.fontFamily = "Sans-serif";
+});
+</script>
+
+</body>
+</html>

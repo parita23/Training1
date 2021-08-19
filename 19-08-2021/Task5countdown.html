@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        var myTimer;
+   function clock() {
+     myTimer = setInterval(myClock, 1000);
+     var c = prompt("Enter second");
+
+     function myClock() {
+       document.getElementById("demo").innerHTML = --c;
+       if (c == 0) {
+         clearInterval(myTimer);
+         alert("Reached zero");
+       }
+     }
+   }
+    </script>
+</head>
+<body>
+    <p id="demo">Enter time</p>
+    <button onclick="clock(); document.getElementById('demo').innerHTML='c';">Start counter</button>
+    <button onclick="clearInterval(myTimer);">Stop counter</button>
+    </body>
+</html>
