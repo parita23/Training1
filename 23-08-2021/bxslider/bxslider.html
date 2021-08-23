@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Responsive jQuery Slider - bxSlider</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.css">
+
+<style>
+    body{
+  background-color:#157998;
+  /* width: 100%; */
+}
+h1{
+  color:#fff;
+  text-align: center;
+}
+.bx-wrapper
+{
+    max-width: 1024px!important
+
+} 
+</style>
+  </head>
+
+<body>
+  <h1>jQuery Slider - bxSlider</h1>
+  <ul class="bxslider">
+  <li><img src="images/img1.jpg" /></li>
+  <li><img src="images/img2.jpg" /></li>
+  <li><img src="images/img3.jpg" /></li>
+</ul>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.min.js"></script>
+<script>
+    $(document).ready(function(){
+  $('.bxslider').bxSlider();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
+        <script>
+            $(document).ready(function()
+            {
+                $("#frm").validate({
+                    rules: {
+				firstname: "required",
+				lastname: "required",
+				password: {
+					required: true,
+					minlength: 7
+				},
+                mobile:
+                {
+                    required:true,
+                    minlength:10
+                },
+                date: {
+                required: true,
+                date: true
+                },
+
+                age:
+                {
+                required:true,
+                min:21
+                },
+				confirm_password: {
+					required: true,
+					minlength: 7,
+					equalTo: "#password"
+				},
+				email: {
+					required: true,
+					email: true
+				},
+				agree: "required"
+			},
+			messages: {
+				firstname: "Please enter your firstname",
+				lastname: "Please enter your lastname",
+				mobile: "Please enter the Mobile No.",
+				password: {
+					required: "Please enter a password",
+					minlength: "Your Password must contain atleast 7 character."
+				},
+                date:{
+                    required: "Date is required",
+                    date:"enter a date "
+                },
+				confirm_password: {
+					required: "Please enter a password",
+					minlength: "Your Password must contain atleast 7 character.",
+					equalTo: "Please enter the same password"
+				},
+				email: "Please enter a valid email address",
+                
+			    }
+                });
+                })
+            
+            </script>
+            <style>
+                .error
+                {
+                 color: red;
+                 font-weight: bold;
+                }
+            </style>
+  <title>Registration Form</title>
+    </head>
+
+    <body bgcolor="pink">
+        <form id="frm">
+
+            <table align="center"> 
+                <tr>
+                    <td><label for="firstname">Firstname</label><br>
+                        <input id="firstname" name="firstname" type="text"></td>
+                </tr>
+                <tr>
+                    <td><label for="lastname">Lastname</label><br>
+                        <input id="lastname" name="lastname" type="text"></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email</label><br>
+                        <input id="email" name="email" type="email"></td>
+                </tr>
+                <tr>
+                    <td><label for="mobile">Mobile No</label><br>
+                        <input id="mobile" name="mobile" type="number"></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password</label><br>
+                        <input id="password" name="password" type="password"></td>
+                </tr>
+                <tr>
+                    <td> <label for="confirm_password">Confirm password</label><br>
+                        <input id="confirm_password" name="confirm_password" type="password"></td>
+                </tr>
+                <tr>
+                    <td> <label for="date">Date of Birth</label><br>
+                        <input id="date" name="date" type="date"></td>
+                </tr>
+                <tr>
+                    <td><label for="file2">Select any image file</label><br>
+                        <input type="file" id="file2" name="file2" class="required" accept="image/*"></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Submit"></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

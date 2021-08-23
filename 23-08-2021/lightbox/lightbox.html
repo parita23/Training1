@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>light box</title>
+    
+    <link rel="stylesheet" href="./dist/css/lightbox.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    
+    
+  
+
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                transition: all.2s linear;
+            }
+            body{
+                background: #222;
+            }
+            .gallary{
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                width: 90%;
+                margin: 0 auto;
+            }
+            .gallary a{
+                height: 200px;
+                width: 300px;
+                margin: 20px;
+                border-radius: 5px;
+                overflow: hidden;
+                box-shadow: 0 3px 5px #000;
+            }
+            .gallary a img{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                
+            }
+            .gallary a img:hover{
+                transform: scale(1.4);
+            }
+            h1{
+                font-size: 50px;
+                margin-top: 10px;
+                color: #fff;
+                text-align: center;
+                text-transform: uppercase;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+        </style>
+
+
+
+</head>
+<body>
+    <h1>Lightbox gallary</h1>
+    <div class="gallary">
+        <!-- <a href="images/img1.jpg">
+            <img src="images/img1.jpg" alt="" >
+        </a>
+        <a href="images/img2.jpg">
+            <img src="images/img2.jpg" alt="">
+        </a>
+        <a href="images/img3.jpg">
+            <img src="images/img3.jpg" alt="">
+        </a>
+        <a href="images/img4.jpg">
+            <img src="images/img4.jpg" alt="">
+        </a>
+        <a href="images/img5.jpg">
+            <img src="images/img5.jpg" alt="">
+        </a>
+        <a href="images/img6.jpg">
+            <img src="images/img6.jpg" alt="">
+        </a> -->
+
+        <a class="example-image-link" href="images/img1.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+            <img class="example-image" src="images/img1.jpg" alt=""/>
+        </a>
+        <a class="example-image-link" href="images/img2.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+            <img class="example-image" src="images/img2.jpg" alt=""/>
+        </a>
+        <a class="example-image-link" href="images/img3.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+            <img class="example-image" src="images/img3.jpg" alt=""/>
+        </a>
+        <a class="example-image-link" href="images/img4.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+            <img class="example-image" src="images/img4.jpg" alt=""/>
+        </a>
+        <a class="example-image-link" href="images/img5.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+            <img class="example-image" src="images/img5.jpg" alt=""/>
+        </a>
+        <a class="example-image-link" href="images/img6.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+            <img class="example-image" src="images/img6.jpg" alt=""/>
+        </a>
+    </div>
+   
+    <script src="./dist/js/lightbox-plus-jquery.min.js"></script>
+
+    <script>
+        lightgallery(document.querySelector('.gallary'));
+    </script>
+</body>
+</html>
