@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("div[class *= 'myCls']").append(" has a CSS class 'myCls' or a class name starts with 'myCls'");
+        });
+    </script>
+</head>
+<body>
+    <h1>CSS Selector: element[attribute *= 'value'] </h1>
+    <div class="myCls">
+        Div 1
+    </div>
+    <div class="first-myCls">
+        Div 2
+    </div>
+    <div class="myCls-test">
+        Div 3
+    </div>
+    <div class="otherCls">
+        Div 4
+    </div>
+	<div class="otherCls myCls">
+        Div 5
+    </div>
+    <span class="otherCls myCls">
+         Span 1 
+    </span>
+	<p class="otherCls myCls">
+	Paragraph 1
+	</p>
+
+</body>
+</html>

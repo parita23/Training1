@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+    </script>
+    <script>
+        $(document).ready(function () {
+       
+            $('[class="yellowDiv"]').append('This element includes class ="yellowDiv" attribute');
+
+        });
+    </script>
+<style>
+	div{
+		border: 1px solid;
+	}
+        
+	p{
+		border: 1px dashed;
+	}
+
+	.boldPrg{
+		border: 1px dashed;
+		font-weight:bold;
+	}
+
+	.yellowDiv{
+		border: 1px solid;
+		background-color:yellow;
+	}
+</style>
+</head>
+<body>
+	<h1>Demo: jQuery attribute selector</h1>   
+	<div id="myDiv1" >
+		<p>&nbsp;</p>
+	</div>
+
+	<p id="impPrg" class="boldPrg">This is paragraph.</p>
+    
+	<div id="myDiv2" class="yellowDiv"></div>
+</body>
+</html>

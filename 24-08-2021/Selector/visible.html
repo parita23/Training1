@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("div:visible").append("- This element is visible ");
+        });
+    </script>
+</head>
+
+<body>
+        <h1>CSS Selector:  element:visible</h1>
+	<div visible="true">
+        	Div Tag1
+	</div>
+	<div style="display:visible">
+		Div Tag2
+	</div>
+	<div hidden="true">
+		Div Tag3
+	</div>
+</body>
+
+</html>

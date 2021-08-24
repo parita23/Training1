@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(":checked").wrap("<span style='background-color:yellow'>");
+        });
+    </script>
+</head>
+
+<body>
+    <h1>CSS Selector: :checked </h1>
+    <p>Select a car:</p>
+    <div>
+        <input type="checkbox" id="bmw" name="bmw" value="BMW" checked>
+        <label for="bmw">BMW</label>
+    </div>
+    <div>
+        <input type="checkbox" id="audi" name="audi" value="AUDI">
+        <label for="audi">AUDI</label>
+    </div>
+</body>
+
+</html>

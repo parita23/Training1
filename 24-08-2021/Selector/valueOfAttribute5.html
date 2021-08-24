@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("div[class != 'myCls']").append(" - This element does not have myCls CSS class");
+
+        });
+    </script>
+</head>
+
+<body>
+  <h1>CSS Selector: element[attribute != 'value']</h1>
+    <div class="myCls">
+        Inside First Div
+    </div>
+    <div class="my_Cls test">
+        Inside Second Div
+    </div>
+    <div class="myClsClass">
+        Inside Third Div
+    </div>
+    <span class="myCls">
+        <p>Paragraph 1</p>
+    </span>
+
+</body>
+
+</html>

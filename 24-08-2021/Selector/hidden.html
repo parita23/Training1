@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            alert('This document has ' +$( "body" ).find( ":hidden" ).not( "script" ).length + ' hidden elements');
+        });
+    </script>
+</head>
+
+<body>
+    <h1>CSS Selector: body </h1>
+    <div hidden="true">
+        First hidden div
+    </div>
+    <div style="display:none">
+        Second hidden div
+    </div>
+    <div>
+            <p>Paragraph 1</p>
+            <p>Paragraph 2</p>
+            <p>Paragraph 3</p>
+            <p>Paragraph 4</p>
+    </div>
+</body>
+
+</html>

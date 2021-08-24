@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(":checkbox").prop("checked", "true");
+
+        });
+    </script>
+</head>
+
+<body>
+    <h1>CSS Selector: :checkbox </h1>
+    <p>Select a car:</p>
+
+    <div>
+        <input type="checkbox" id="bmw" name="bmw" value="BMW">
+        <label for="bmw">BMW</label>
+    </div>
+
+    <div>
+        <input type="checkbox" id="audi" name="audi" value="AUDI">
+        <label for="audi">AUDI</label>
+    </div>
+
+    <br/>
+    <br/>
+    <p>Select a car:</p>
+    
+    <div>
+        <input type="radio" id="bmw" name="bmw" value="BMW" checked>
+        <label for="bmw">BMW</label>
+    </div>
+
+    <div>
+        <input type="radio" id="audi" name="audi" value="AUDI">
+        <label for="audi">AUDI</label>
+    </div>
+
+</body>
+
+</html>

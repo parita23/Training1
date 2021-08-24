@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+    </script>
+    <script>
+        $(document).ready(function () {
+			
+			$('#myDiv').on('mouseenter mouseleave', function() {
+				$(this).text( 'The mouse entered or left from the div' );
+			});
+
+        });
+    </script>
+</head>
+<body>
+	<h1> Demo: Event binding </h1>
+    
+	<div id="myDiv" style="width:100px;height:100px;background-color:red;">
+    </div>
+</body>
+</html>
