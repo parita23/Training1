@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    <script>
+       
+        class Arithmetic {
+  constructor() {
+    this.value = 0;
+  }
+  cls(value) {
+    this.value = value;
+    return this;
+  }
+  add(value) {
+    this.value = this.value + value;
+    return this;
+  }
+  mul(value) {
+    this.value = this.value * value;
+    return this;
+  }
+  div(value) {
+    this.value = this.value / value;
+    return this;
+  }
+  subtract(value) {
+    this.value = this.value - value;
+    return this;
+  }
+  
+  display(){
+      console.log(this.value);
+  }
+}
+
+a = new Arithmetic()
+var cls=parseInt(prompt("Enter default value"));
+            var add=parseInt(prompt("Enter add the value in cls"));
+            var mul=parseInt(prompt("Enter value for multiplication"));
+            var div=parseInt(prompt("Enter value for division"));
+            var sub=parseInt(prompt("Enter value for substraction"));
+a.cls(cls) 
+  .add(add)
+  .mul(mul)
+  .div(div)
+  .subtract(sub)
+  .display()
+
+    </script>
+</body>
+</html>
