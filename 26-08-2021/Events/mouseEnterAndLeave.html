@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+    </script>
+    <script> 
+        $(document).ready(function () {
+			
+			$('#myDiv').mouseenter(function (data) {
+							$(this).css('background-color','green');
+					});
+
+			$('#myDiv').mouseleave(function (data) {
+						$(this).css('background-color','red');
+					});
+
+        });
+    </script>
+</head>
+<body>
+	<h1>Demo: jQuery mouseenter() & mouseleave() method </h1>
+	
+     <div id="myDiv" style="width:100px;height:100px;background-color:red;">
+    </div>
+</body>
+</html>

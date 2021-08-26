@@ -1,0 +1,77 @@
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>selected demo</title>
+  <style>
+  div {
+    color: red;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+ 
+<select name="garden" multiple="multiple">
+  <option>Flowers</option>
+  <option selected="selected">Shrubs</option>
+  <option>Trees</option>
+  <option selected="selected">Bushes</option>
+  <option>Grass</option>
+  <option>Dirt</option>
+</select>
+<div></div>
+ 
+<script>
+$( "select" )
+  .change(function() {
+    var str = "";
+    $( "select option:selected" ).each(function() {
+      str += $( this ).text() + " ";
+    });
+    $( "div" ).text( str );
+  })
+  .trigger( "change" );
+</script>
+ 
+</body>
+</html>
