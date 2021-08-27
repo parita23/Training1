@@ -1,0 +1,473 @@
+<html>
+<!-- datatables button -->
+<!-- https://datatables.net/extensions/buttons/examples/initialisation/simple.html -->
+
+<head>
+    <title>Plugins(formValidator,Datatables)</title>
+    <!-- adding cdn  -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <!--  -->
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+    <!-- cdn for button datables -->
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+    <!--  -->
+    <!-- css  -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <!-- css link for datatables button -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
+    <!-- add validation cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <!-- addtional val cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.js"></script>
+    <!-- bootstarp form -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- jquery choosen links -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js" integrity="sha512-rMGGF4wg1R73ehtnxXBt5mbUfN9JUJwbk21KMlnLZDJh7BkPmeovBuddZCENJddHYYMkCh9hPFnPmS9sspki8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css" integrity="sha512-yVvxUQV0QESBt1SyZbNJMAwyKvFTLMyXSyBHDO4BG5t7k/Lw34tyqlSDlKIrIENIzCl+RVUNjmCPG+V/GMesRw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <!--  -->
+    <!-- ckeditor cdn link -->
+    <script src="ckeditor/ckeditor.js"></script>
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script> -->
+    <!-- Datepicker ink -->
+    <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js">
+    </script>
+    <!-- timepickerlink -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <!-- lightbox 2 -->
+    <link href="src/css/lightbox.css" rel="stylesheet" />
+    <!--  -->
+    <script>
+        // <!-- datatables -->
+        $(document).ready(function() {
+            $('#example').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+        });
+        //form validation
+        $(function() {
+            // custom validators
+            $.validator.addMethod('strongPassword', function(value, element) {
+                // return value.length >= 6;
+                // if the field is req the the optional element will call.
+                // length check,1 digit check,char check
+                return this.optional(element) || value.length >= 6 && /\d/.test(value) && /[a-z]/i.test(value);
+            }, 'Your password must be atleast 6 charcters and cotains one number and one char\'.');
+
+            // ------------------------
+            $.validator.addMethod('dobVal', function(value, element) {
+                return this.optional(element) || /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]| 1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/.test(value);
+            }, 'Invalid Date');
+            // count char for textarea
+            $("#address").on("keyup", function() {
+                var maxLength = 160;
+                $("#count").text("Characters Entered: " + this.value.length);
+                var textlen = maxLength - $(this).val().length;
+                $('#rchars').text("Characters Remained: " + textlen);
+            });
+            // jquery choosen
+            $(document).ready(function() {
+                $("select").chosen({
+                    width: "400px"
+                });
+            });
+            // ckeditor
+            CKEDITOR.replace('content');
+            CKEDITOR.replace('content2');
+            // Datepicker
+            $(document).ready(function() {
+                $(function() {
+                    $("#dob").datepicker();
+                });
+                // Timepicker
+                $('#timepicker').timepicker({
+                    timeFormat: 'h:mm p',
+                    interval: 60,
+                    minTime: '10',
+                    maxTime: '6:00pm',
+                    defaultTime: '11',
+                    startTime: '10:00',
+                    dynamic: false,
+                    dropdown: true,
+                    scrollbar: true
+                });
+            });
+            lightbox.option({
+                // 'resizeDuration': 200,
+                'imageFadeDuration': 2000,
+                'wrapAround': true
+            })
+
+            // xxxxxxxxxxxxxx
+            $("#register-form").validate({
+                rules: {
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    password: {
+                        required: true,
+                        strongPassword: true
+                    },
+                    password2: {
+                        required: true,
+                        equalTo: "#password"
+                    },
+                    firstName: {
+                        required: true,
+                        minlength: 3,
+                        maxlength: 10,
+                        nowhitespace: true,
+                        lettersonly: true
+                    },
+                    mobile: {
+                        required: true,
+                        minlength: 10,
+                        maxlength: 10,
+                        number: true
+                    },
+                    address: {
+                        required: true,
+                        maxlength: 160
+                    },
+                    dob: {
+                        required: true,
+                        dobVal: true
+                    },
+                    age: {
+                        required: true,
+                        minlength: 1,
+                        maxlength: 2,
+                        number: true
+                    },
+                    file: {
+                        required: true,
+                        extension: "png|jpe?g|gif",
+                        // filesize: 1048576
+                    },
+                },
+                // custom msgs
+                messages: {
+                    email: {
+                        required: 'Please enter an email address',
+                        email: 'Please enter a <em>valid</em> email address'
+                    },
+                    mobile: {
+                        minlength: 'Please Enter 10 digit Mobile Number, characters are not valid',
+                        mobile: 'Enter your mobile number'
+                    },
+                    file: {
+                        extension: "File must be JPG, GIF or PNG, less than 1MB"
+                    }
+
+                }
+            });
+        });
+    </script>
+    <style>
+        .error {
+            color: red;
+        }
+        
+        .img-container {
+            margin: 20px;
+        }
+        
+        .img-container img {
+            width: 200px;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            transition: .3s;
+            -webkit-transition: .3s;
+            -moz-transition: .3s;
+        }
+        
+        .img-container img:hover {
+            transform: scale(0.97);
+            -webkit-transform: scale(0.97);
+            -moz-transform: scale(0.97);
+            -o-transform: scale(0.97);
+            opacity: 0.75;
+            -webkit-opacity: 0.75;
+            -moz-opacity: 0.75;
+            transition: .3s;
+            -webkit-transition: .3s;
+            -moz-transition: .3s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>DataTable</h2><br>
+        <table id="example" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Age</th>
+                    <th>Start date</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tiger Nixon</td>
+                    <td>System Architect</td>
+                    <td>Edinburgh</td>
+                    <td>61</td>
+                    <td>2011/04/25</td>
+                    <td>$320,800</td>
+                </tr>
+                <tr>
+                    <td>Garrett Winters</td>
+                    <td>Accountant</td>
+                    <td>Tokyo</td>
+                    <td>63</td>
+                    <td>2011/07/25</td>
+                    <td>$170,750</td>
+                </tr>
+                <tr>
+                    <td>Ashton Cox</td>
+                    <td>Junior Technical Author</td>
+                    <td>San Francisco</td>
+                    <td>66</td>
+                    <td>2009/01/12</td>
+                    <td>$86,000</td>
+                </tr>
+                <tr>
+                    <td>Cedric Kelly</td>
+                    <td>Senior Javascript Developer</td>
+                    <td>Edinburgh</td>
+                    <td>22</td>
+                    <td>2012/03/29</td>
+                    <td>$433,060</td>
+                </tr>
+                <tr>
+                    <td>Airi Satou</td>
+                    <td>Accountant</td>
+                    <td>Tokyo</td>
+                    <td>33</td>
+                    <td>2008/11/28</td>
+                    <td>$162,700</td>
+                </tr>
+                <tr>
+                    <td>Brielle Williamson</td>
+                    <td>Integration Specialist</td>
+                    <td>New York</td>
+                    <td>61</td>
+                    <td>2012/12/02</td>
+                    <td>$372,000</td>
+                </tr>
+                <tr>
+                    <td>Herrod Chandler</td>
+                    <td>Sales Assistant</td>
+                    <td>San Francisco</td>
+                    <td>59</td>
+                    <td>2012/08/06</td>
+                    <td>$137,500</td>
+                </tr>
+                <tr>
+                    <td>Rhona Davidson</td>
+                    <td>Integration Specialist</td>
+                    <td>Tokyo</td>
+                    <td>55</td>
+                    <td>2010/10/14</td>
+                    <td>$327,900</td>
+                </tr>
+                <tr>
+                    <td>Colleen Hurst</td>
+                    <td>Javascript Developer</td>
+                    <td>San Francisco</td>
+                    <td>39</td>
+                    <td>2009/09/15</td>
+                    <td>$205,500</td>
+                </tr>
+                <tr>
+                    <td>Sonya Frost</td>
+                    <td>Software Engineer</td>
+                    <td>Edinburgh</td>
+                    <td>23</td>
+                    <td>2008/12/13</td>
+                    <td>$103,600</td>
+                </tr>
+                <tr>
+                    <td>Jena Gaines</td>
+                    <td>Office Manager</td>
+                    <td>London</td>
+                    <td>30</td>
+                    <td>2008/12/19</td>
+                    <td>$90,560</td>
+                </tr>
+                <tr>
+                    <td>Quinn Flynn</td>
+                    <td>Support Lead</td>
+                    <td>Edinburgh</td>
+                    <td>22</td>
+                    <td>2013/03/03</td>
+                    <td>$342,000</td>
+                </tr>
+                <tr>
+                    <td>Charde Marshall</td>
+                    <td>Regional Director</td>
+                    <td>San Francisco</td>
+                    <td>36</td>
+                    <td>2008/10/16</td>
+                    <td>$470,600</td>
+                </tr>
+                <tr>
+                    <td>Haley Kennedy</td>
+                    <td>Senior Marketing Designer</td>
+                    <td>London</td>
+                    <td>43</td>
+                    <td>2012/12/18</td>
+                    <td>$313,500</td>
+                </tr>
+                <tr>
+                    <td>Tatyana Fitzpatrick</td>
+                    <td>Regional Director</td>
+                    <td>London</td>
+                    <td>19</td>
+                    <td>2010/03/17</td>
+                    <td>$385,750</td>
+                </tr>
+                <tr>
+                    <td>Michael Silva</td>
+                    <td>Marketing Designer</td>
+                    <td>London</td>
+                    <td>66</td>
+                    <td>2012/11/27</td>
+                    <td>$198,500</td>
+                </tr>
+                <tr>
+                    <td>Paul Byrd</td>
+                    <td>Chief Financial Officer (CFO)</td>
+                    <td>New York</td>
+                    <td>64</td>
+                    <td>2010/06/09</td>
+                    <td>$725,000</td>
+                </tr>
+               
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Age</th>
+                    <th>Start date</th>
+                    <th>Salary</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <br><br>
+    <!-- form validaion using jquery -->
+    <div class="container">
+        <h2>SignUp Form</h2>
+        <hr><br>
+        <form id="register-form">
+            <div class="form-group">
+                <label for="exampleInputName1">First Name</label>
+                <input class="form-control" name="firstName" placeholder="Enter firstName" type="text" />
+
+            </div>
+            <div class="form-group">
+                <label for="exampleInputName2">Last Name</label>
+                <input class="form-control" name="lastName" placeholder="Enter lastName" type="text" />
+            </div>
+            <div class="form-group">
+                <label for="exampleInputNumber">Mobile No.</label>
+                <input class="form-control" name="mobile" placeholder="Enter Mobile No." type="text" />
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input class="form-control" name="email" placeholder="Enter Email" type="text" />
+            </div>
+            <div class="form-group">
+                <label for="exampleInputAddress">Address</label>
+                <textarea class="form-control" id="address" name="address" placeholder="Enter Address"></textarea>
+                <span style="margin-left: 20%;" id="count">Characters Entered: 0</span>
+                <span style="margin-left: 20%;" id="rchars">Characters Remained: 160</span>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputCity">City</label>
+                <select>
+                <option>Ahmedabad</option>
+                <option>Pune</option>
+                <option>Mumbai</option>
+                <option>Banglore</option>
+                <option>Udaipur</option>
+            </select>
+            </div>
+            <div class="form-group" style=" width: 80%; margin-top: 5%;">
+                <label for="exampleInputCity">About Me</label>
+                <textarea name="content"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputDob">DOB <small>[MM/DD/YEAR]</small></label>
+                <input class="form-control" name="dob" id="dob" placeholder="MM/DD/YEAR" type="text" />
+            </div>
+            <div class="form-group">
+                <label for="exampleInputbirthtime">BirthTime</label>
+                <input class="form-control" name="birthtime" id="timepicker" placeholder="" type="text" />
+            </div>
+            <div class="form-group">
+                <label for="exampleInputCity">Hobby</label>
+                <select multiple>
+                <option>Singing</option>
+                <option>Dance</option>
+                <option>Coding</option>
+                <option>Cricket</option>
+                <option>Batminton</option>
+                <option>Sleep</option>
+            </select>
+            </div>
+            <div class="form-group" style=" width: 80%; margin-top: 5%;">
+                <label for="exampleInputCity">Introduction</label>
+                <textarea name="content2"></textarea>
+            </div>
+
+            <div class="img-container">
+                <label for="exampleInputGallery">Gallery</label><br><br>
+
+                <a href="images/img1.jpg" data-lightbox="roadtrip"> <img src="images/img1.jpg" alt="" />
+                </a>
+                <a href="images/img2.jpg" data-lightbox="roadtrip">
+                    <img src="images/img2.jpg" alt="" /></a>
+                <a href="images/img3.jpg" data-lightbox="roadtrip"> <img src="images/img3.jpg" alt="Girls" /></a>
+                <a href="images/img4.jpg" data-lightbox="roadtrip"> <img src="images/img4.jpg" alt="Fashion" /></a>
+
+
+                <a href="images/img5.jpg" data-lightbox="roadtrip">
+                    <img src="images/img5.jpg" alt="nature" />
+                
+            </div>
+
+            <input type="submit" id="submit-button" value="Sign Up" class="btn btn-primary">
+        </form>
+    </div>
+    <br><br>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <script src="src/js/lightbox.js"></script>
+</body>
+
+</html>
+
+</html>

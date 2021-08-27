@@ -5,59 +5,60 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>hardest validation task</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="dist/js/lightbox-plus-jquery.min.js"></script>
-     <!-- light box -->
+	 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <!--  -->
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+    <!-- cdn for button datables -->
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+    <!--  -->
+    <!-- css  -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <!-- css link for datatables button -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
+    <!-- add validation cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <!-- addtional val cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.js"></script>
+    <!-- bootstarp form -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- jquery choosen links -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js" integrity="sha512-rMGGF4wg1R73ehtnxXBt5mbUfN9JUJwbk21KMlnLZDJh7BkPmeovBuddZCENJddHYYMkCh9hPFnPmS9sspki8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css" integrity="sha512-yVvxUQV0QESBt1SyZbNJMAwyKvFTLMyXSyBHDO4BG5t7k/Lw34tyqlSDlKIrIENIzCl+RVUNjmCPG+V/GMesRw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <!--  -->
+    <!-- ckeditor cdn link -->
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>   
+
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script> -->
+    <!-- Datepicker ink -->
+    <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js">
+    </script>
+    <!-- timepickerlink -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <!-- lightbox 2 -->
      <link rel="stylesheet" href="dist/css/lightbox.min.css"> 
-      <!-- normal ckeditor. -->
-    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
-
+	 
+	 <!-- <style> -->
+	  <!-- .error { -->
+        <!-- color: red; -->
+    <!-- } -->
+	 <!-- </style> -->
     
-   
-
-    <!-- <script type="text/javascript" src="ckeditor/plugins/lite/lite-interface.js"></script> -->
-   
-    <!-- date picker -->
-    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-    <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> -->
-        
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
-
+       
        
         
         
-        <!-- <style>
-           
-           
-            .gallary{
-                
-                background: #222;
-                display: flex;
-                justify-content: center;
-                flex-wrap: wrap;
-                width: 90%;
-                margin: 0 auto;
-            }
-            .gallary a{
-                height: 100px;
-                width: 50px;
-                margin: 20px;
-                border-radius: 5px;
-                overflow: hidden;
-                box-shadow: 0 3px 5px #000;
-            }
-            .gallary a img{
-                height: 50%;
-                width: 50%;
-                object-fit: cover;
-                
-            }
-            .gallary a img:hover{
-                transform: scale(1.4);
-            }
-           
-        </style>  -->
+       
+       
 
     <script>
     $(document).ready(function () {
@@ -87,12 +88,12 @@
                     <input id="email" name="email" type="email"></td>
             </tr>
             <tr>
-                <td><label for="textarea">Address</label><br>
-                    <textarea id="textarea1" name="w3review" onkeyup="countChar(this)" rows="4" cols="50" > 
-                    </textarea>
-                    <div id ="charNum"></div>
-                    <span id="re"></span><br>
-                    </td>
+                <td>
+				<label for="exampleInputAddress">Address</label>
+                <textarea  id="address" name="address" placeholder="Enter Address"></textarea><br/>
+                <span style="margin-left: 20%;" id="count">Characters Entered: 0</span><span style="margin-left: 20%;" id="rchars">Characters Remaining: 160</span>
+                
+                 </td>
             </tr>
             <tr>
                 <td><label for="city">City</label><br>
@@ -140,7 +141,7 @@
             </tr>
          
             <tr>
-                <td><label for="gallery">Gallery</label><br>
+                <!-- <td><label for="gallery">Gallery</label><br>
                     <a class="example-image-link" href="images/img1.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
                         <img class="example-image" src="images/img1.jpg" alt="" style="width: 250px; height: 200px; overflow: hidden;">
                     </a></td>
@@ -155,16 +156,32 @@
                     </a></td>
                    <td><a class="example-image-link" href="images/img5.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward." >
                         <img class="example-image" src="images/img5.jpg" alt=""style="width: 250px; height: 200px;">
-                    </a></td>
+                    </a></td> -->
                 </tr>
             <tr>
                 <td><input type="submit" value="Submit"></td>
             </tr>
         </fieldset>
         </table>
+        <label for="gallery">Gallery</label><br>
+                    <a class="example-image-link" href="images/img1.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+                        <img class="example-image" src="images/img1.jpg" alt="" style="width: 250px; height: 200px; overflow: hidden;">
+                    </a></td>
+                    <td><a class="example-image-link" href="images/img2.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+                        <img class="example-image" src="images/img2.jpg" alt="" style="width: 250px; height: 200px; overflow: hidden;">
+                    </a></td>
+                    <td><a class="example-image-link" href="images/img3.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward." >
+                        <img class="example-image" src="images/img3.jpg" alt="" style="width: 250px; height: 200px;">
+                    </a></td>
+                    <td><a class="example-image-link" href="images/img4.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward." >
+                        <img class="example-image" src="images/img4.jpg" alt="" style="width: 250px; height: 200px;">
+                    </a></td>
+                   <td><a class="example-image-link" href="images/img5.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward." >
+                        <img class="example-image" src="images/img5.jpg" alt=""style="width: 250px; height: 200px;">
+                    </a>
     </form>
     <h2>Datatable</h2>
-    <table id="example" class="display nowrap" >
+    <table id="example" class="display nowrap">
         <thead>
             <tr>
                 <th>Name</th>
@@ -328,22 +345,14 @@
             </tr>
         </tfoot>
     </table>
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.min.css" />
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.jquery.min.js"></script>
-    <script>
-    $(document).ready(function () {
-        $('#city').chosen();
-        });
-    $(document).ready(function () {
+ 
+    
+      <script>
+	  $('#city').chosen();
         $('#hobby').chosen();
-        });
-    </script>
-
-    <!--light ckEditor plugin-->
-   
-    <script>
         CKEDITOR.replace('editor1', {
           height: 200,
           baseFloatZIndex: 10005
@@ -353,27 +362,7 @@
           height: 200,
           baseFloatZIndex: 10005
         });
-      </script>
-     
-
-     <!-- lightbox -->
-     
-
-    <!-- data table -->
-    <script src=" https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
-    <script src=" https://cdn.datatables.net/buttons/2.0.0/js/dataTables.buttons.min.js"></script>
-    <script src=" https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.html5.min.js"></script>
-    <script src=" https://cdn.datatables.net/buttons/2.0.0/js/buttons.print.min.js"></script>
-    <link rel="stylesheet" href=" https://cdn.datatables.net/1.11.0/css/jquery.dataTables.min.css" />
-    <link rel="stylesheet" href=" https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css" />
-
-     
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
-    <script>
-        $(document).ready(function() {
+		  $(document).ready(function() {
     $('#example').DataTable( {
         dom: 'Bfrtip',
         buttons: [
@@ -381,15 +370,9 @@
         ]
         } );
     } );
-    </script>
-   
-    <!-- time picker -->
-   
-    
-
-    <!-- validation of form -->
-    <script>
-        function countChar(val) {
+	
+	
+	function countChar(val) {
             var len = val.value.length;
             if (len >= 160) {
                 alert()
@@ -400,6 +383,12 @@
 
             }
         };
+		  $("#address").on("keyup", function() { 
+                 var maxLength = 160;
+                 $("#count").text("Characters Entered: " + this.value.length); 
+                 var textlen = maxLength - $(this).val().length;
+                 $('#rchars').text("Characters Remained: " + textlen);
+            }); 
        
         $(document).ready(function()
         {
@@ -451,8 +440,8 @@
              }
             });
             })
-        
-        </script>
+       </script>
+     
 
 </body>
 </html>
