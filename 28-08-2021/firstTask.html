@@ -1,0 +1,22 @@
+<html>
+<head>
+<script type="text/javascript">
+        function loadXMLDoc() {
+                alert("hii");
+               var test=new XMLHttpRequest();
+                test.onreadystatechange=function()
+                 {
+                if (test.readyState==4 && test.status==200) {
+                document.getElementById("div1").innerHTML=test.responseText;
+                }
+        };// end of onreadstatechange function
+        req.open("GET","myinfo.txt",true);
+        req.send();
+        } // end of loadXMLDoc()
+</script>
+</head>
+<body>
+        <div id="div1">my first ajax program</div>
+        <input type="button" id="button1" value="click me!" onclick="loadXMLDoc()"/>
+</body>
+</html>
