@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Alert</title>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <style>
+        .example button {
+                float: left;
+                background-color: #4E3E55;
+                color: white;
+                border: none;
+                box-shadow: none;
+                font-size: 17px;
+                font-weight: 500;
+                font-weight: 600;
+                border-radius: 3px;
+                padding: 15px 35px;
+                margin: 26px 5px 0 5px;
+                cursor: pointer; 
+                }
+                .example button:focus{
+                outline: none; 
+                }
+                .example button:hover{
+                background-color: #33DE23; 
+                }
+                .example button:active{
+                background-color: #81ccee; 
+                }
+    </style>
+   
+</head>
+<body>
+    <div class="example">
+        <button id="b1">A basic message</button>
+        <button id="b2">A title with a text under</button>
+        <button id="b3">A success message!</button>
+        
+        <button id="b6">A message with a custom icon</button>
+      </div>
+      <script>
+        document.getElementById('b1').onclick = function(){
+        swal("Here's a message!");
+    };
+
+    document.getElementById('b2').onclick = function(){
+        swal("Here's a message!", "It's pretty, isn't it?")
+    };
+
+    document.getElementById('b3').onclick = function(){
+        swal("Good job!", "You clicked the button!", "success");
+    };
+
+   
+    document.getElementById('b6').onclick = function(){
+        swal({
+            title: "Sweet!",
+            text: "Here's a custom image.",
+            imageUrl: 'https://i.imgur.com/4NZ6uLY.jpg'
+        });
+    };
+</script>
+</body>
+</html>

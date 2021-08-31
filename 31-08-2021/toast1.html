@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <button id="btn">click me</button>
+    <button id="warning">warning</button>
+    <button id="success">success</button>
+    <button id="error">error</button>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        document.getElementById("btn").addEventListener("click",function()
+        { 
+            toastr.info("button clicked");
+        });
+        document.getElementById("warning").addEventListener("click",function()
+        { 
+            toastr.warning('not correct, prepare to correct');
+        });
+        document.getElementById("success").addEventListener("click",function()
+        { 
+            toastr.success('exactle correct!', 'GOOD');
+        });
+        document.getElementById("error").addEventListener("click",function()
+        { 
+            toastr.error('there is something error.', 'try to solve!');
+        });
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login using sweetlert</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+    <center>
+        <p>
+            <input type="text" id="username" placeholder="Username"> 
+        </p>
+        <p>
+            <input type="password" id="pass" placeholder="Password"> 
+        </p>
+        <p>
+            <input type="submit" onclick="validations()"> 
+        </p>
+     </center>
+     <script>
+         function validations()
+         {
+             var username="parita";
+             var password="123";
+
+             var uname=document.getElementById('username').value;
+             var pass=document.getElementById('pass').value;
+             if((username==uname)&&(pass==password))
+             {
+                swal("Good job!", "Your details has been mached", "success");
+             }
+             else
+             {
+                swal("Oops...", "something went wrong", "error");
+             }
+         }
+     </script>
+</body>
+</html>
