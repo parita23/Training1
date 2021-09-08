@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hardest validation task</title>
+	 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <!--  -->
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+    <!-- cdn for button datables -->
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+    <!--  -->
+    <!-- css  -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <!-- css link for datatables button -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
+    <!-- add validation cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <!-- addtional val cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.js"></script>
+    <!-- bootstarp form -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- jquery choosen links -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js" integrity="sha512-rMGGF4wg1R73ehtnxXBt5mbUfN9JUJwbk21KMlnLZDJh7BkPmeovBuddZCENJddHYYMkCh9hPFnPmS9sspki8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css" integrity="sha512-yVvxUQV0QESBt1SyZbNJMAwyKvFTLMyXSyBHDO4BG5t7k/Lw34tyqlSDlKIrIENIzCl+RVUNjmCPG+V/GMesRw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <!--  -->
+    <!-- ckeditor cdn link -->
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>   
+
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script> -->
+    <!-- Datepicker ink -->
+    <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js">
+    </script>
+    <!-- timepickerlink -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <!-- lightbox 2 -->
+     <link rel="stylesheet" href="dist/css/lightbox.min.css"> 
+	 
+	 <!-- <style> -->
+	  <!-- .error { -->
+        <!-- color: red; -->
+    <!-- } -->
+	 <!-- </style> -->
+
+    <script>
+    $(document).ready(function () {
+        $('#city').chosen();
+        });
+    </script>
+   
+</head>
+<body>
+    <form id="frm">
+        <fieldset>
+            <legend>personal</legend>
+        <table width="50%"> 
+           
+                
+            <tr>
+                <td><label for="name">Name:</label><br>
+                    <input id="name" name="name" type="text"></td>
+            </tr>
+           
+            <tr>
+                <td><label for="mobile">Mobile No</label><br>
+                    <input id="mobile" name="mobile" type="number"></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email</label><br>
+                    <input id="email" name="email" type="email"></td>
+            </tr>
+            <tr>
+                <td>
+				<label for="exampleInputAddress">Address</label>
+                <textarea  id="address" name="address" placeholder="Enter Address"></textarea><br/>
+                <span style="margin-left: 20%;" id="count">Characters Entered: 0</span><span style="margin-left: 20%;" id="rchars">Characters Remaining: 160</span>
+                
+                 </td>
+            </tr>
+            <tr>
+                <td><label for="city">City</label><br>
+                   
+                    <select id="city">
+                      <option>porbandar</option>
+                      <option>Rajkot</option>
+                      <option value="Ahmedabad">Ahmedabad</option>
+                      <option value="Jamnagar">Jamnagar</option>
+                      <option value="Junagadh">Junagadh</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="textarea">About me</label><br>
+                    <textarea id="editor1"  rows="4" cols="50">
+                    
+                    </textarea></td>
+            </tr>
+            <tr>
+                <td> <label for="date">Date of Birth</label><br>
+                    <input id="datepicker" name="date"  /></td>
+            </tr>
+            <tr>
+                <td><label for="biethtime">Birth Time</label><br>
+                    <input type="time" id="birthtime" ></td>
+            </tr>
+            <tr>
+                <td><label for="Hobby">Hobby</label><br>
+                   
+                    <select id="hobby" multiple="true">
+                      <option>travelling</option>
+                      <option>dancing</option>
+                      <option >listening song</option>
+                      <option >playing badminton</option>
+                      <option >shopping</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="textarea">Introduction</label><br>
+                    <textarea id="editor2"  rows="4" cols="50">
+                    
+                    </textarea></td>
+            </tr>
+         
+            <tr>
+                <!-- <td><label for="gallery">Gallery</label><br>
+                    <a class="example-image-link" href="images/img1.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+                        <img class="example-image" src="images/img1.jpg" alt="" style="width: 250px; height: 200px; overflow: hidden;">
+                    </a></td>
+                    <td><a class="example-image-link" href="images/img2.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+                        <img class="example-image" src="images/img2.jpg" alt="" style="width: 250px; height: 200px; overflow: hidden;">
+                    </a></td>
+                    <td><a class="example-image-link" href="images/img3.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward." >
+                        <img class="example-image" src="images/img3.jpg" alt="" style="width: 250px; height: 200px;">
+                    </a></td>
+                    <td><a class="example-image-link" href="images/img4.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward." >
+                        <img class="example-image" src="images/img4.jpg" alt="" style="width: 250px; height: 200px;">
+                    </a></td>
+                   <td><a class="example-image-link" href="images/img5.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward." >
+                        <img class="example-image" src="images/img5.jpg" alt=""style="width: 250px; height: 200px;">
+                    </a></td> -->
+                </tr>
+            <tr>
+                <td><input type="submit" value="Submit"></td>
+            </tr>
+        </fieldset>
+        </table>
+        <label for="gallery">Gallery</label><br>
+                    <a class="example-image-link" href="images/img1.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+                        <img class="example-image" src="images/img1.jpg" alt="" style="width: 250px; height: 200px; overflow: hidden;">
+                    </a></td>
+                    <td><a class="example-image-link" href="images/img2.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+                        <img class="example-image" src="images/img2.jpg" alt="" style="width: 250px; height: 200px; overflow: hidden;">
+                    </a></td>
+                    <td><a class="example-image-link" href="images/img3.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward." >
+                        <img class="example-image" src="images/img3.jpg" alt="" style="width: 250px; height: 200px;">
+                    </a></td>
+                    <td><a class="example-image-link" href="images/img4.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward." >
+                        <img class="example-image" src="images/img4.jpg" alt="" style="width: 250px; height: 200px;">
+                    </a></td>
+                   <td><a class="example-image-link" href="images/img5.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward." >
+                        <img class="example-image" src="images/img5.jpg" alt=""style="width: 250px; height: 200px;">
+                    </a>
+    </form>
+    <h2>Datatable</h2>
+    <table id="example" class="display nowrap">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>parita</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>21</td>
+                <td>$320,800</td>
+            </tr>
+            <tr>
+                <td>Garrett Winters</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>63</td>
+                <td>$170,750</td>
+            </tr>
+            <tr>
+                <td>Ashton Cox</td>
+                <td>Junior Technical Author</td>
+                <td>San Francisco</td>
+                <td>66</td>
+                <td>$86,000</td>
+            </tr>
+            <tr>
+                <td>Cedric Kelly</td>
+                <td>Senior Javascript Developer</td>
+                <td>Edinburgh</td>
+                <td>22</td>
+                <td>$433,060</td>
+            </tr>
+            <tr>
+                <td>Airi Satou</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>33</td>
+                <td>$162,700</td>
+            </tr>
+            <tr>
+                <td>Brielle Williamson</td>
+                <td>Integration Specialist</td>
+                <td>New York</td>
+                <td>61</td>
+                <td>$372,000</td>
+            </tr>
+            <tr>
+                <td>Herrod Chandler</td>
+                <td>Sales Assistant</td>
+                <td>San Francisco</td>
+                <td>59</td>
+                <td>$137,500</td>
+            </tr>
+            <tr>
+                <td>Rhona Davidson</td>
+                <td>Integration Specialist</td>
+                <td>Tokyo</td>
+                <td>55</td>
+                <td>$327,900</td>
+            </tr>
+            <tr>
+                <td>Colleen Hurst</td>
+                <td>Javascript Developer</td>
+                <td>San Francisco</td>
+                <td>39</td>
+                <td>$205,500</td>
+            </tr>
+            <tr>
+                <td>Sonya Frost</td>
+                <td>Software Engineer</td>
+                <td>Edinburgh</td>
+                <td>23</td>
+                <td>$103,600</td>
+            </tr>
+            <tr>
+                <td>Jena Gaines</td>
+                <td>Office Manager</td>
+                <td>London</td>
+                <td>30</td>
+                <td>$90,560</td>
+            </tr>
+            <tr>
+                <td>Quinn Flynn</td>
+                <td>Support Lead</td>
+                <td>Edinburgh</td>
+                <td>22</td>
+                <td>$342,000</td>
+            </tr>
+            <tr>
+                <td>Charde Marshall</td>
+                <td>Regional Director</td>
+                <td>San Francisco</td>
+                <td>36</td>
+                <td>$470,600</td>
+            </tr>
+            <tr>
+                <td>Haley Kennedy</td>
+                <td>Senior Marketing Designer</td>
+                <td>London</td>
+                <td>43</td>
+                <td>$313,500</td>
+            </tr>
+            <tr>
+                <td>Tatyana Fitzpatrick</td>
+                <td>Regional Director</td>
+                <td>London</td>
+                <td>19</td>
+                <td>$385,750</td>
+            </tr>
+            <tr>
+                <td>Michael Silva</td>
+                <td>Marketing Designer</td>
+                <td>London</td>
+                <td>66</td>
+                <td>$198,500</td>
+            </tr>
+            <tr>
+                <td>Paul Byrd</td>
+                <td>Chief Financial Officer (CFO)</td>
+                <td>New York</td>
+                <td>64</td>
+                <td>$725,000</td>
+            </tr>
+            <tr>
+                <td>Gloria Little</td>
+                <td>Systems Administrator</td>
+                <td>New York</td>
+                <td>59</td>
+                <td>$237,500</td>
+            </tr>
+            <tr>
+                <td>Bradley Greer</td>
+                <td>Software Engineer</td>
+                <td>London</td>
+                <td>41</td>
+                <td>$132,000</td>
+            </tr>
+            <tr>
+                <td>Dai Rios</td>
+                <td>Personnel Lead</td>
+                <td>Edinburgh</td>
+                <td>35</td>
+                <td>$217,500</td>
+            </tr>
+           
+            
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Salary</th>
+            </tr>
+        </tfoot>
+    </table>
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    
+
+ 
+    
+      <script>
+	  $('#city').chosen();
+        $('#hobby').chosen();
+        CKEDITOR.replace('editor1', {
+          height: 200,
+          baseFloatZIndex: 10005
+        });
+
+        CKEDITOR.replace('editor2', {
+          height: 200,
+          baseFloatZIndex: 10005
+        });
+		  $(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+        } );
+    } );
+	
+	
+	function countChar(val) {
+            var len = val.value.length;
+            if (len >= 160) {
+                alert()
+            } else {
+                var ch = 160 - len;
+                $('#charNum').text("Total Charactor:-" + len );
+                $('#re').text("Remaining Charactor:-" + ch );
+
+            }
+        };
+		  $("#address").on("keyup", function() { 
+                 var maxLength = 160;
+                 $("#count").text("Characters Entered: " + this.value.length); 
+                 var textlen = maxLength - $(this).val().length;
+                 $('#rchars').text("Characters Remained: " + textlen);
+            }); 
+       
+        $(document).ready(function()
+        {
+            $("#frm").validate({
+                rules: {
+            name: 
+            {
+                required : true,
+                minlength: 3,
+                maxlength:10
+            },
+            mobile:
+            {
+                required:true,
+                minlength:10,
+                maxlength:10
+            },
+            email: {
+                required: true,
+                email: true
+            },
+           address:{
+           required:true,
+           maxlength:160
+        },
+            
+           
+            date: {
+            required: true,
+            date: true
+            }, 
+            
+        },
+        messages: {
+            name: "Please enter your name",
+            mobile: "Please enter the Mobile No.",
+            email: "Please enter a valid email address",
+            textarea:"please enter address",
+            city:"please enter city",
+            editor1:"please enter about yourself",
+            datepicker:"please enter valid date",
+            timepicker:"please enter valid time",
+            hoby:"please select your hoby",
+            editor2:"please enter your introduction",
+            // date:{
+            //     required: "Date is required",
+            //     date:"enter a date "
+            // },
+             }
+            });
+            })
+       </script>
+     
+
+</body>
+</html>
