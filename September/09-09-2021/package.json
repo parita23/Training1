@@ -1,0 +1,17 @@
+{
+  "name": "09-09-2021",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mailDemo.js",
+  "dependencies": {
+    "nodemailer": "^6.6.3",
+    "supervisor": "^0.12.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
