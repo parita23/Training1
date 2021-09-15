@@ -1,0 +1,34 @@
+<html>
+    <script>
+        class Calculator {
+        constructor(value) {
+            this.value=value;
+        }
+
+        divide(div) {
+            this.value=this.value/div;
+            return this;
+        }
+
+        add(add) {
+            this.value=this.value+add;
+            return this;
+        }
+
+        multiply(mul) {
+            this.value=this.value*mul;
+            return this;
+        }
+        sub(sub) {
+            this.value=this.value-sub;
+            return this;
+        }
+        toString(){
+            return this.value;
+        }
+
+    }
+    var calc = new Calculator(10).add(5).multiply(2).divide(3).sub(2);
+    alert(calc);
+    </script>
+</html>
