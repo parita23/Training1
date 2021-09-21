@@ -1,0 +1,142 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    border-radius: 5px;
+    padding: 20px;
+    width: 100%;
+}
+
+input[type=text],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgb(44, 73, 90);
+    resize: vertical;
+}
+
+input[type=email] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgb(44, 73, 90);
+    resize: vertical;
+}
+
+input[type=date] {
+    width: 50%;
+    padding: 12px;
+    border: 1px solid rgb(44, 73, 90);
+    resize: vertical;
+}
+
+input[type=number] {
+    width: 50%;
+    padding: 12px;
+    border: 1px solid rgb(44, 73, 90);
+    resize: vertical;
+}
+
+input[type=password] {
+    width: 50%;
+    padding: 12px;
+    border: 1px solid rgb(44, 73, 90);
+    resize: vertical;
+}
+
+label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+
+input[type=submit] {
+    background-color: #031404;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}
+
+input[type=submit]:hover {
+    background-color: #260929;
+}
+
+.container {
+    background-color: #4c759b;
+    background-image: linear-gradient(rgb(230, 229, 214), pink);
+    border-radius: 5px;
+    padding: 20px;
+    width: 50%;
+    margin-left: 25%;
+}
+
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
+
+.col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* h1 {
+    background-color: rgb(40, 50, 68);
+    text-align: center;
+    color: rgb(185, 203, 236);
+    border: 2 solid black;
+    border-radius: 10%;
+    padding: 3px;
+    width: 35%;
+    margin-left: 35%;
+} */
+
+
+/* Animation */
+
+.locationDiv {
+    width: 100%;
+    height: 120px;
+    background-color: rgb(197, 143, 143);
+    animation-name: example;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    text-align: center;
+    padding: 3px;
+}
+
+@keyframes example {
+    0% {
+        background-color: rgb(182, 125, 125);
+    }
+    25% {
+        background-color: rgb(235, 235, 156);
+    }
+    50% {
+        background-color: rgb(128, 128, 233);
+    }
+    100% {
+        background-color: rgb(121, 194, 121);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .col-25,
+    .col-75,
+    input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+}

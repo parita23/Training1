@@ -1,0 +1,91 @@
+<html>
+      <head>
+           <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <link rel="stylesheet" href="stylesheet.css" text="html/CSS" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+      </head>
+  <style>
+        .demo {
+            background-color: #387499;
+            border: none;
+            color: white;
+            padding: 15px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+<body>
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+  <a href="/" class="demo">Home</a>
+    <a href="/signup" class="demo">Sign up Here</a>
+    <a href="/login" class="demo">Login</a>
+        <a href="/marksheet" class="demo">Marksheet</a>
+         <a href="/signupForEmail" class="demo">Sign up For Email</a>
+         <a href="/customEmail" class="demo">Custom Email</a>
+        <br><hr><br>
+
+     <div class="container">
+        <h2>Signup Form</h2><hr>
+        <p>Register yorself Here, Your details will be mailed to Authorized person through email.</p>
+      <br>
+        <form method="POST" action="send">
+           <h2 style="color: green;"> {{msg}}</h2>
+            <div class="row">
+                <div class="col-25">
+                    <label for="fname">Name</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="name" name="name" placeholder="Your name..">
+                </div>
+            </div>
+        
+              <div class="row">
+                <div class="col-25">
+                    <label for="email">Email</label>
+                </div>
+                <div class="col-75">
+                    <input type="email" id="email" name="email" placeholder="Your Email..">
+                </div>
+            </div>
+        <div class="row">
+                <div class="col-25">
+                    <label for="comment">Password</label>
+                </div>
+                <div class="col-75">
+                    <input type="password" id="password" name="password" placeholder="Enter Password.." />
+                </div>
+            </div>
+                <div class="row">
+                <div class="col-25">
+                    <label for="mobile">Mobile</label>
+                </div>
+                <div class="col-75">
+                    <input type="number" id="mobile" name="mobile" placeholder="Your mobile No..">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="gender">Gender</label>
+                </div>
+                <div class="col-75">
+                    <select id="gender" name="gender">
+                         <option value="male">Male</option>
+                         <option value="female">Female</option>
+                         <option value="others">Others</option>
+                    </select>
+                </div>
+            </div><br><br>
+         
+            <div class="row">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+    </body>
+</html>
