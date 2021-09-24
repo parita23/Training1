@@ -63,7 +63,7 @@ router.get('/logout', function(req, res, next) {
 //     req.session.views=1
 //     res.end('welcome to the session demo.refresh!')
 //   }
-// });
+//});
 
 //create cookie
 router.get('/create-cookie',function(req, res){
@@ -109,15 +109,15 @@ router.get('/create-cookie',function(req, res){
       }
     });
     //count using cookie
-    router.get('/count', function(req, res) {
-      if (req.cookies.count) {
-          var count = parseInt(req.cookies.count);
-      } else {
-          var count = 0;
-      }
-      var counter = count + 1;
-      res.cookie('count', counter);
-      res.send('Page Visitor Count : ' + counter);
-  });
+  //   router.get('/count', function(req, res) {
+  //     if (req.cookies.count) {
+  //         var count = parseInt(req.cookies.count);
+  //     } else {
+  //         var count = 0;
+  //     }
+  //     var counter = count + 1;
+  //     res.cookie('count', counter);
+  //     res.send('Page Visitor Count : ' + counter);
+  // });
   
 module.exports = router;

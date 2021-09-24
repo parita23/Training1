@@ -1,0 +1,23 @@
+<h1>Display</h1>
+{{mydata.length}} Records Found
+<table border='1'>
+    <tr>
+        <th>Name</th>
+        <th>Mobile</th>
+         <th>Action</th>
+    </tr>
+
+{{#each mydata}}
+    <tr>
+    <td>{{user_name}}</td>
+    <td>{{user_mobile}}</td>
+    <td>
+        <a href="/users/edit/{{_id}}">Edit</a> |
+        <a href="/users/delete/{{_id}}">Delete</a>
+
+    </td>
+    </tr>
+{{/each}}
+
+
+</table>

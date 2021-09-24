@@ -1,0 +1,24 @@
+<h1>Display</h1>
+{{mydata.length}} Records Found
+<table border='1'>
+    <tr>
+        <th>Product Name</th>
+        <th>Product Code</th>
+         <th>Product Price</th>
+    </tr>
+
+{{#each mydata}}
+    <tr>
+    <td>{{product_name}}</td>
+    <td>{{product_code}}</td>
+    <td>{{product_price}}</td>
+    <td>
+        <a href="/product/edit_product/{{_id}}">Edit</a> |
+        <a href="/product/delete/{{_id}}">Delete</a>
+
+    </td>
+    </tr>
+{{/each}}
+
+
+</table>
