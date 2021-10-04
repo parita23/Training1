@@ -1,0 +1,37 @@
+<html>
+<body>
+<a href="/login">Login</a> | <a href="/Home">Home</a> | <a href="/signup">signup</a> |  <a href="/change_password">Change Password</a> | <a href="/display_table">Display</a>
+    <h1>Display Table</h1>
+    {{user_array.length}} Records Found 
+    <table border='1'>
+        <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>DOB</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>IdAdmin</th>
+            <th>Join Date</th>
+            <th>Action</th>
+        </tr>
+       {{#each user_array}}
+        <tr>
+            <td>{{user_name }}</td>
+            <td>{{ user_gender }}</td>
+            <td>{{ user_dob}}</td>
+            <td>{{ user_mobile}}</td>
+            <td>{{ user_email }}</td>
+            <td>{{user_password }}</td>
+            <td>{{user_isadmin }}</td>
+            <td>{{user_joindate }}</td>
+            <td>
+                    <a href='/edit_form/{{_id }}'>Edit</a> | 
+                    <a href='/delete/{{_id }}'>Delete</a> |
+                    {{!-- <a href='/show/{{_id }}'>Show</a>      --}}
+          </td>
+        </tr>
+         {{/each}}
+    </table>
+</body>
+</html>
