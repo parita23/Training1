@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+</style>
+  </head>
+  <body>
+    {{!-- {{mydata}} --}}
+    <div class="card">
+  <div class="container">
+     <img src="/images/{{mydata.imgName}}" alt="myimg" style="width:70%">
+ <form method="POST" action="/product/cart">
+  <label for="">Product Name :</label>
+  <input type="text" name="name" value={{mydata.name}} ><br>
+  <label for="">detalis</label>
+<textarea name="details" cols="4" rows="4" >{{mydata.details}}</textarea>
+  <label for="">Price</label>
+  <input type="text" name="price" value={{mydata.price}} ><br>
+  <label for="">Quantity</label>
+  <input type="number" name="qty" value={{mydata.qty}}><br>
+  {{!-- <label for="">Product Image :</label> --}}
+  {{!-- <input type="file" name="file" disabled><br> --}}
+  
+  <input type="submit" value="Add To Cart">
+  <a href="/product/displaycart"><input type="button" name="Display" value="Display"></a>
+</form>
+  </div>
+</div>
+
+  </body>
+</html>

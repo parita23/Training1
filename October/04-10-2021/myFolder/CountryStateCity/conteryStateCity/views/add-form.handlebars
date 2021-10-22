@@ -1,0 +1,34 @@
+<html>
+<body>
+    <a href="/">Home</a>|<a href="/add-form">Add</a> | <a href="/display-table">Display</a> |
+    <a href="/category/add">Category Add</a> | <a href="/category/display">Category Display</a>
+    | <a href="/subcategory/add">SubCategory Add</a> | <a href="/subcategory/display">SubCategory Display</a>
+   
+    <form method="post">
+        <h1>Add Record</h1>
+        <table>
+            <tr>
+                <td>Name</td>
+                <td> <input type="text" placeholder="Enter Name" name="user_name"></td>
+            </tr>
+            <tr>
+                <td>MobileNo</td>
+                <td><input type="number" placeholder="Enter Mobile No" 
+                    name="user_mobile"></td>
+            </tr>
+            <tr>
+                <td>MobileNo</td>
+                <td><select class="form-control" name="user_id">
+                        <% for(var i=0; i<user_array.length;i++) { %>
+                       <option value='<%= user_array[i]._id %>'><%= user_array[i].user_name %></option>
+                    <% } %>
+                    </select></td>
+            </tr>
+            <tr>
+                <td><input type="submit"></td>
+                <td><input type="reset"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

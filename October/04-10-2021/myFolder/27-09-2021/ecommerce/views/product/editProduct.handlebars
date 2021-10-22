@@ -1,0 +1,15 @@
+<form method="POST">
+  <label for="">Product Name :</label>
+  <input type="text" name="name" value={{mydata.name}} placeholder="Enter a name"><br>
+  <label for="">detalis</label>
+<textarea name="details" cols="4" rows="4" placeholder="Enter a details">{{mydata.details}}</textarea>
+  <label for="">Price</label>
+  <input type="text" name="price" value={{mydata.price}} placeholder="Enter a price"><br>
+  <label for="">Quantity</label>
+  <input type="number" name="qty" value={{mydata.qty}} placeholder="Enter a quantity"><br>
+  <label for="">Product Image :</label>
+  <input type="file" name="file" placeholder="select image"><br>
+  
+  <input type="submit">
+  <a href="/display"><input type="button" name="Display" value="Display"></a>
+</form>

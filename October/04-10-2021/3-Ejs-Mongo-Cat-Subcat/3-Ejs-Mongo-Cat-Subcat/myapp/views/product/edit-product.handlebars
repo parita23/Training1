@@ -1,0 +1,26 @@
+<html>
+<body>
+<form method="post" >
+    <table>
+        <h1>{{product_array}}</h1>
+        <tr>
+            <td>product Name : </td>
+            <td><input type="text" name="product_name"
+                value={{product_array.product_name}} > </td>
+        </tr>
+         <tr>
+            <td>product price : </td>
+            <td><input type="text" name="product_price"
+                value={{product_array.product_price}} > </td>
+        </tr>
+        
+    
+        <tr>
+                <td> <input type="submit">
+                  <input type="button" value="Display" 
+                  onclick="window.location='display';"> </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

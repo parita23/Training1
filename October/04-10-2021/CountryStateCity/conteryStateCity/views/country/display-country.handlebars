@@ -1,0 +1,22 @@
+<table border=1>
+                            <thead>
+                                <tr>
+                                 <th>Country</th>
+                                 <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <p>{{user_array.length}} Records Found </p>
+                                {{#each user_array}}
+                                     <tr>
+                                      <td>{{country_name}}</td>
+                                        <td>
+                    <a href='/country/edit/{{_id}}'>Edit</a> | 
+                    <a href='/country/delete/{{_id}}' Onclick="ConfirmDelete()">Delete</a> |
+                
+          
+          </td>
+                                     </tr>
+                                {{/each}}
+                            
+                        </table>

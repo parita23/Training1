@@ -1,0 +1,30 @@
+<h1>Display</h1>
+<h3>Number of data is {{mydata.length}}</h3>
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>E-mail</th>
+        <th>Mobile</th>
+        <th>Gender</th>
+        <th>D.O.B</th>
+        <th>Address</th>
+        <th>Password</th>
+        <th colspan="2">Action</th>
+    </tr>
+    {{#each mydata}}
+    <tr>
+        <td>{{{name}}}</td>
+        <td>{{{email}}}</td>
+        <td>{{{phno}}}</td>
+        <td>{{{gender}}}</td>
+        <td>{{{dob}}}</td>
+        <td>{{address}}</td>
+        <td>{{{password}}}</td>
+        <td><a href="/user/edit/{{_id}}">Edit</a></td>
+        <td><a href="/user/delete/{{_id}}">Delete</a></td>
+    </tr>
+    {{/each}}
+
+</table>
+

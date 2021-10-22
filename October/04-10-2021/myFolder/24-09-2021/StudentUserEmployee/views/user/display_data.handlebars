@@ -1,0 +1,20 @@
+<h1>Display</h1>
+<h3>Number of data is {{mydata.length}}</h3>
+
+<table border="1">
+    <tr>
+        <td>Name</td>
+        <td>Mobile</td>
+        <td colspan="2">Action</td>
+    </tr>
+    {{#each mydata}}
+    <tr>
+        <td>{{{name}}}</td>
+        <td>{{ph_no}}</td>
+        <td><a href="/users/edit/{{_id}}">Edit</a></td>
+        <td><a href="/users/delete/{{_id}}">Delete</a></td>
+    </tr>
+    {{/each}}
+
+</table>
+

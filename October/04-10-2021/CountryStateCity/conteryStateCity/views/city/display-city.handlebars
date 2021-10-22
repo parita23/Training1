@@ -1,0 +1,29 @@
+<table border=1>
+                            <thead>
+                                <tr>
+                        
+                                 <th>City Name</th>
+                                 <th>State Name</th>
+                                 <th>Country Name</th>
+                                 <th colspan="2">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <h1>{{city_array}}</h1>
+                                <p>{{city_array.length}} Records Found </p>
+                                {{#each city_array}}
+                                     <tr>
+                                        
+                                      <td>{{city_name}}</td>
+                                       <td>{{_state_name.state_name}}</td>
+                                      <td>{{_country_name.country_name}}</td>
+                                       <td> <a href='/city/edit/{{_id}}'>Edit</a></td>
+                                       <td><a href='/city/delete/{{_id}}' Onclick="ConfirmDelete()">Delete</a> </td>
+                    </tr>
+          
+          </td>
+                                     </tr>
+                                {{/each}}
+                            </tbody>
+                           
+                        </table>

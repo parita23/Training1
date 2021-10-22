@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 50%;
+  float: right;
+
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+  width: 50%;
+  float: right;
+}
+</style>
+  </head>
+  <body>
+      <div><a href="/product/displayProduct" class="btn btn-primary">Back</a>
+    {{!-- {{mydata}} --}} 
+
+     {{!-- <img src="/images/{{mydata.imgName}}" alt="myimg" style="width:70%"> --}}
+
+
+
+      {{#each mydata}}
+      <div class="card m-3" style="width: 18rem;">
+  <img src="/images/{{mydata.imgName}}" alt="myimg" style="width:70%" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"><label for="">Product Name : {{name}}</label></h5>
+    <p class="card-text"><label for="">detalis : {{details}}</label>
+
+  <label for="">Price : {{price}} </label>
+
+  <label for="">Quantity : {{price}} </label></p>
+    <a href="#" class="btn btn-primary">Buy Product</a>
+    <a href="/product/remove/{{_id}}" class="btn btn-primary">Remove</a>
+    {{!-- <td><a href="/product/delete/{{_id}}">Delete</a></td> --}}
+  </div>
+</div>
+{{/each}}<br>
+
+  </body>
+</html>

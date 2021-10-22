@@ -1,0 +1,22 @@
+<table border=1>
+                            <thead>
+                                <tr>
+                                 <th>Category</th>
+                                 <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <p>{{user_array.length}} Records Found </p>
+                                {{#each user_array}}
+                                     <tr>
+                                      <td>{{category_name}}</td>
+                                        <td>
+                    <a href='/category/edit/{{_id}}'>Edit</a> | 
+                    <a href='/category/delete/{{_id}}' Onclick="ConfirmDelete()">Delete</a> |
+                    <a href='/category/show/{{_id}}'>Show</a>
+          
+          </td>
+                                     </tr>
+                                {{/each}}
+                            
+                        </table>

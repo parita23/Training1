@@ -1,0 +1,45 @@
+<html>
+
+<script>
+function ConfirmDelete()
+{
+  var x = confirm("Are you sure you want to delete?");
+  if (x)
+      return true;
+  else
+    return false;
+}
+</script>
+<body>
+    <a href="/">Home</a>|<a href="/add-form">Add</a> | <a href="/display-table">Display</a> |
+ <a href="/category/add">Category Add</a> | <a href="/category/display">Category Display</a>
+ | <a href="/subcategory/add">SubCategory Add</a> | <a href="/subcategory/display">SubCategory Display</a>
+
+    <h1>Display Table</h1>
+    
+    <table border='1'>
+        <tr>
+            <th>Subcategory_name</th>
+            <th>category_name</th>
+ 
+            <th>Action</th>
+        </tr>
+
+        <h1>{{subcategory_array}}</h1>
+        {{#each subcategory_array}}
+        <tr> 
+            <td>{{sub_category_name}}</td>
+            <td>{{_category.category_name}}</td>
+           
+            <td>
+                    <a href='/subcategory/edit/{{_id}}'>Edit</a> | 
+                    <a href='/subcategory/delete/{{_id}}' Onclick="ConfirmDelete()">Delete</a> |
+                    <a href='/subcategory/show/{{_id}}'>Show</a>
+          
+          </td>
+        </tr>
+        {{/each}}
+    </table>
+    
+</body>
+</html>

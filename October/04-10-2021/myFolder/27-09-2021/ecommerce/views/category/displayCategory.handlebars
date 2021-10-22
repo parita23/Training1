@@ -1,0 +1,18 @@
+<h1>Display</h1>
+<h3>Number of data is {{mydata.length}}</h3>
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th colspan="2">Action</th>
+    </tr>
+    {{#each mydata}}
+    <tr>
+        <td>{{{name}}}</td>
+        <td><a href="/category/edit/{{_id}}">Edit</a></td>
+        <td><a href="/category/delete/{{_id}}">Delete</a></td>
+    </tr>
+    {{/each}}
+
+</table>
+

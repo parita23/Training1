@@ -1,0 +1,26 @@
+<form action="/add" method="POST" enctype="multipart/form-data">
+  <label for="">Name</label>
+  <input type="text" name="name" placeholder="Enter a name"><br>
+  <label for="">E-mail</label>
+  <input type="text" name="email" placeholder="Enter a email"><br>
+  <label for="">Mobile</label>
+  <input type="text" name="phno" placeholder="Enter a number"><br>
+  <label for="">Age :</label>
+  <input type="radio" name="gender" value="male"><label for="">Male</label>
+  <input type="radio" name="gender" value="female"><label for="">Female</label><br>
+  <label for="">Image</label>
+  <input type="file" name="file" placeholder="Select an image"><br>
+  <label for="">Join Date :</label>
+  <input type="date" name="date"><br>
+  <label for="hoby">Hobby :</label>
+  <select id="hoby" name="hoby" multiple>
+    <option value="Reading">Reading</option>
+    <option value="Travelling">Travelling</option>
+    <option value="listen_song">listening song</option>
+    <option value="watching_movie">watching movie</option>
+  </select><br>
+  <label for="">Password :</label>
+  <input type="password" name="password">
+  <input type="submit">
+  <a href="/display"><input type="button" name="Display" value="Display"></a>
+</form>

@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+  </head>
+
+<div class="container">
+  <h1>{{title}}</h1>
+  <hr />
+  <div class="row">
+      <div class="col-md-6">
+        <form action="/blogs/uploads" method="post" enctype="multipart/form-data">
+          <div class="form-group">
+            <input type="text" name="title" class="form-control" placeholder="Title">
+          </div>
+          <div class="form-group">
+            <input type="file" name="blogimage" multiple/>
+          </div>
+          <button type="submit" class="btn btn-info">upload</button>
+        </form>
+      </div>
+  </div>
+</div>
+</html>

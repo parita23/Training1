@@ -1,0 +1,42 @@
+<html>
+
+<script>
+function ConfirmDelete()
+{
+  var x = confirm("Are you sure you want to delete?");
+  if (x)
+      return true;
+  else
+    return false;
+}
+</script>
+<body>
+   <a href="/state/add">State Add</a> | <a href="/state/display">State Display</a>
+
+    <h1>Display Table</h1>
+    
+    <table border='1'>
+        <tr>
+            <th>Subcategory_name</th>
+            <th>category_name</th>
+ 
+            <th>Action</th>
+        </tr>
+
+        <h1>{{subcategory_array}}</h1>
+        {{#each subcategory_array}}
+        <tr> 
+            <td>{{state_name}}</td>
+            <td>{{_country_name.country_name}}</td>
+           
+            <td>
+                    <a href='/state/edit/{{_id}}'>Edit</a> | 
+                    <a href='/state/delete/{{_id}}' Onclick="ConfirmDelete()">Delete</a> |
+        
+          </td>
+        </tr>
+        {{/each}}
+    </table>
+    
+</body>
+</html>

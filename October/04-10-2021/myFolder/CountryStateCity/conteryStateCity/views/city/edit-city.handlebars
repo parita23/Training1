@@ -1,0 +1,53 @@
+<html>
+<body>
+<a href="/city/add">Country Add</a> | <a href="/city/display">country Display</a>
+
+    <form method="post">
+        <h1>{{mycountry}}</h1>
+
+        <h3>{{mystate}}</h3>
+        
+        <h6>{{mycity}}</h6>
+        <h1>Edit Record</h1>
+        <table>
+            <tr>
+                <td>State : </td>
+                <td>
+                <select name="_state">
+                     {{#each mystate}}
+
+                            <option value='{{_state_name._id}}'>{{_state_name.state_name}}</option>
+                           
+                           {{/each}}
+                    </select>
+                    </td>
+            </tr>
+            <tr>
+                <td>Country : </td>
+                <td>
+                <select name="_country">
+                     {{#each mycountry}}
+          
+
+                            <option value='{{_country_name._id}}'>{{_country_name.country_name}}</option>
+                           
+                           {{/each}}
+
+                    </select>
+                    </td>
+            </tr>
+             
+            <tr>
+                <td>City Name:</td>
+                <td><input type="text" name="city_name" value={{mycity.city_name}}></td>
+            </tr>
+            
+           
+            <tr>
+                <td><input type="submit"></td>
+                <td><input type="reset"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

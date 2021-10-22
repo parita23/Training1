@@ -1,0 +1,10 @@
+{{#if myemail }}
+
+<h1> Welcome to Userside {{myemail}}
+    <a href="/user/change-password">Change Password</a>
+    <a href="/user/logout">Logout</a>
+</h1>
+
+{{ else }}
+<h1><a href="/user/login">Login</a></h1>
+{{/if}}
