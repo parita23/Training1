@@ -12,40 +12,50 @@
     {{!-- bootstrap --}}
 
     <style>
-        .errorClass{
+        .errorClass {
             border: 2px red ridge;
         }
-        #floatingInput-error{
+
+        #floatingInput-error {
             color: red;
         }
-        #floatingInput1-error{
+
+        #floatingInput1-error {
             color: red;
         }
-        #floatingPassword-error{
+
+        #floatingPassword-error {
             color: red;
-        } 
+        }
     </style>
 </head>
 
 <body>
-    <form id="myform">
+    <form id="myform" method="post">
         <div class="col-md-5" style="margin: auto;">
             <div class="form-floating">
-                <input type="text" name="myname" class="form-control" id="floatingInput" placeholder="name" >
-                <label >Enter Name</label>
+                <input type="text" name="myname" class="form-control" id="floatingInput" placeholder="name"
+                    value="{{myname}}">
+                <label>Enter Name</label>
             </div>
-    
+
             <div class="form-floating mt-3">
                 <input type="text" class="form-control" id="floatingInput1" placeholder="name@example.com"
-                    name="myemail" >
-                <label >Email Address</label>
-                
+                    name="myemail" value="{{myemail}}">
+                <label>Email Address</label>
+
             </div>
             <div class="form-floating mt-3">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
-                    name="password" >
-                <label >Password</label>
-                
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password"
+                    value="{{password}}">
+                <label>Password</label>
+
+            </div>
+            <div class="form-floating mt-3">
+                <input type="text" class="form-control" id="floatingMobile" placeholder="mobile NO" name="mobile"
+                    value="{{mobile}}">
+                <label>Mobile</label>
+
             </div>
             <div class="form-floating mt-3">
                 <button class="btn btn-primary" style="margin-top: 15px;" type="submit">Submit Data</button>
@@ -61,10 +71,15 @@
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     {{!-- jquery validation --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script
+        src="https://unpkg.com/jquery-input-mask-phone-number@1.0.14/dist/jquery-input-mask-phone-number.min.js"></script>
 
     <script>
 
         $(Document).ready(() => {
+
+
+
             $.validator.addMethod("nameTest", function (value) {
 
                 return /^[a-zA-Z]+$/.test(value) // consists of only these
@@ -78,6 +93,10 @@
                 return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(value) // consists of only these
             });
 
+            $('#floatingMobile').usPhoneFormat({
+                format: 'xxx-xxx-xxxx',
+            });
+           
             $("#myform").validate({
                 rules: {
                     myname: {
@@ -92,6 +111,9 @@
                     password: {
                         required: true,
                         passwordTest: true
+                    },
+                    mobile: {
+                        required: true,
                     }
                 },
                 messages:
@@ -109,6 +131,9 @@
                         required: "Please enter your password",
                         passwordTest: "Minimum eight characters, at least one letter, one number and one special character"
 
+                    },
+                    mobile: {
+                        required: "Please enter your mobile number",
                     },
                 },
                 highlight: function (element) {
@@ -139,6 +164,9 @@
                         error.insertAfter(element.parent());
                     }
                     else if ($(element).attr('name') == 'password') {
+                        error.insertAfter(element.parent());
+                    }
+                    else if ($(element).attr('name') == 'mobile') {
                         error.insertAfter(element.parent());
                     }
                 },

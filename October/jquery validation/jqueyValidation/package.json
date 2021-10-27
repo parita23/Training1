@@ -11,6 +11,11 @@
     "express": "~4.16.1",
     "hbs": "~4.0.4",
     "http-errors": "~1.6.3",
-    "morgan": "~1.9.1"
+    "maskdata": "^1.1.6",
+    "md5": "^2.3.0",
+    "mongoose": "^6.0.12",
+    "morgan": "~1.9.1",
+    "node-fetch": "^2.6.5",
+    "salted-sha512": "^1.0.0"
   }
 }

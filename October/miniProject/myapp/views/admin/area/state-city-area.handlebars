@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AdminLTE_Project</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="/plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="/plugins/summernote/summernote-bs4.min.css">
+
+</head>
+
+<body>
+    <form method="POST">
+        <div class="card card-success">
+            <div class="card-header">
+                <h3 class="card-title">Area Form</h3>
+            </div>
+            <p style="background-color: green; color: white;">{{msg}}</p>
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Area</label>
+
+                    {{!-- <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="far fa-square"></i></span>
+                        </div>
+                        <input type="text" name="area_name" value="{{area_name}}" class="form-control"
+                            placeholder="Enter Area name" required />
+                    </div> --}}
+                    <!-- /.input group -->
+                </div>
+                <!-- /.form group -->
+                {{!-- {{city_array}} --}}
+                <div class="form-group">
+                    <label>Select state</label>
+                    <div class="input-group">
+                        <select class="form-control select2bs4" style="width: 100%;" name="state_name"
+                            id="state-dropdown">
+                            <option selected="" disabled="">Select state</option>
+                            {{#each state_array}}
+                            <option value='{{_id}}'>{{state_name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <!-- /.input group -->
+                </div>
+                <!-- /.form group -->
+                {{!-- {{state_array}} --}}
+                <div class="form-group">
+                    <label>city</label>
+                    <div class="input-group">
+
+                        <select class="form-control select2bs4" id="city-dropdown" style="width: 100%;" name="city_name"
+                            required>
+                        </select>
+                    </div>
+                </div>
+                <!-- /.form group -->
+                <div class="form-group">
+                    <label>Area</label>
+                    <div class="input-group">
+
+                        <select class="form-control select2bs4" id="area-dropdown" style="width: 100%;" name="area_name"
+                            required>
+                        </select>
+                    </div>
+                </div>
+                <input class="btn btn-success" type="submit" value="Add Area" />
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(document).ready(function () {
+                console.log("Hiiiiiii");
+                $("#state-dropdown").on('change', function () {
+
+                    var id = this.value;
+                    $.ajax({
+                        url: "/admin/area/getCity/" + id,
+                        type: "GET",
+                        success: function (result) {
+
+                            $("#city-dropdown").html('');
+
+                            if (result) {
+
+                                let html = '<option selected="" disabled="">Select City</option>';
+                                if (result) {
+                                    for (let subCat of result) {
+                                        html += '<option value="' + subCat._id + '">' + subCat.city_name + '</option>'
+                                    }
+                                }
+                                $("#city-dropdown").append(html);
+                            } else {
+                                alert(result.message)
+                            }
+                        }
+                    })
+                });
+            });
+            //for area Ajax load
+            $("#city-dropdown").on('change', function () {
+                var id = this.value;
+                console.log(id);
+                $.ajax({
+                    url: "/admin/area/getArea/" + id,
+                    type: "GET",
+                    success: function (result) {
+                        console.log(result);
+                        $("#area-dropdown").html('');
+
+                        if (result) {
+
+                            let html = '<option selected="" disabled="">Select Area</option>';
+                            if (result) {
+                                for (let subCat of result) {
+                                    html += '<option value="' + subCat._id + '">' + subCat.area_name + '</option>'
+                                }
+                            }
+                            $("#area-dropdown").append(html);
+                        } else {
+                            alert(result.message)
+                        }
+                    }
+                })
+            });
+        });
+    </script>
+</body>
+
+</html>
