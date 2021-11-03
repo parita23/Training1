@@ -56,6 +56,17 @@ router.post('/',  function (req, res, next) {
   })
 
 });
+//email exist or not
+router.get('/existOrNotValidation', async function(req,res){
+  let data = await jqueryModel.findOne({myemail:req.query.myemail})
+
+  if(data){
+    res.send(false);
+  }else{
+    res.send(true);
+  }
+});
+
 router.get('/login', function (req, res, next) {
   res.render('login', { layout: false });
 });

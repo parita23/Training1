@@ -105,7 +105,10 @@
                     },
                     myemail: {
                         required: true,
-                        emailTest: true
+                        emailTest: true,
+                        remote: {
+                        url: "/existOrNotValidation",
+                    },
 
                     },
                     password: {
@@ -124,7 +127,8 @@
                     },
                     myemail: {
                         required: "Please enter your email",
-                        emailTest: "enter proper email address with @ charster and digit"
+                        emailTest: "enter proper email address with @ charster and digit",
+                        remote:"email are already exist"
                     },
 
                     password: {

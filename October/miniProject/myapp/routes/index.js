@@ -6,7 +6,18 @@ var router = express.Router();
 //   res.render('index');
 // });
 
-	
+router.get('/signup11', function (req, res) {
+  res.render('signup11');
+});
+router.post('/signup11', function (req, res) {
+  var data = req.body;
+  console.log(data);  
+  // console.log("Name: ", data.name);
+  // console.log("Age: ", data.age);
+  // console.log("Gender: ", data.gender);
+    
+  res.send();
+});
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

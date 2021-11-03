@@ -70,6 +70,7 @@ mongoose.connect("mongodb://admin:admin@localhost:27017/admin")
 
 app.use('/', indexRouter);
 app.use('/admin/users', usersRouter);
+
 app.use('/admin/category', categoryRouter);
 app.use('/admin/subcategory', subcategoryRouter);
 app.use('/admin/product', productRouter);

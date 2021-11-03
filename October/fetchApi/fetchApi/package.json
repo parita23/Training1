@@ -13,6 +13,7 @@
     "http-errors": "~1.6.3",
     "mongoose": "^6.0.12",
     "morgan": "~1.9.1",
-    "node-fetch": "^2.6.5"
+    "node-fetch": "^2.6.5",
+    "prompt": "^1.2.0"
   }
 }
