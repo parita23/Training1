@@ -74,7 +74,7 @@ router.get('/delete/:id', function(req, res) {
           res.redirect('/category/display');
       } else {
         console.log(" Record Deleted ");
-          res.redirect('/admin/category/display');
+          res.redirect('/');
       }
   });
 });
@@ -84,12 +84,12 @@ router.get('/delete/:id', function(req, res) {
 //Get Single User for Edit Record
 router.get('/edit/:id', function(req, res) {
   console.log(req.params.id);
-  CategoryModel.findById(req.params.id, function(err, db_category_array) {
+  AjaxModel.findById(req.params.id, function(err, db_category_array) {
       if (err) {
           console.log("Edit Fetch Error " + err);
       } else {
           console.log(db_category_array);
-          res.render('admin/category/edit-category', { category_array: db_category_array });
+          res.render('index', { category_array: db_category_array });
       }
   }).lean();
 });
@@ -101,16 +101,16 @@ router.post('/edit/:id', function(req, res) {
   console.log("Edit ID is"+ req.params.id);
 
   const mybodydata = {
-    category_name: req.body.category_name 
+    fName: req.body.fName 
   }
 
-  CategoryModel.findByIdAndUpdate(req.params.id, mybodydata, function(err) {
+  AjaxModel.findByIdAndUpdate(req.params.id, mybodydata, function(err) {
       if (err) {
           console.log("Error in Record Update");
-          res.redirect('/admin/category/display-category');
+          res.redirect('/');
       } else {
         
-          res.redirect('/admin/category/display');
+          res.redirect('/');
       }
   });
 });
