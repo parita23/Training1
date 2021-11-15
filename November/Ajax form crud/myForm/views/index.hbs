@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <form id="formEx" method="post" enctype="multipart/form-data">
+        <div class="col-md-5" style="margin: auto;">
+            <div class="form-floating">
+                <input type="text" name="firstName" class="form-control" id="floatingInput"
+                    placeholder="Enter your first name">
+                <label>Enter First Name</label>
+            </div>
+
+            <div class="form-floating">
+                <input type="text" name="lastName" class="form-control" id="floatingInput2"
+                    placeholder="Enter your last name">
+                <label>Enter last Name</label>
+            </div>
+
+            <div class="form-floating">
+
+                <textarea class="form-control" id="textArea" rows="5" cols="5" name="address"
+                    placeholder="Enter your address here"></textarea>
+                <label>Address</label>
+            </div>
+
+            <label class="form-check-label" for="inlineRadio1">Chose Your Gender</label>
+            <div class="form-floating mb-3">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="male" value="male" />
+                    <label class="form-check-label" for="inlineRadio1">Male</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="female" value="female" />
+                    <label class="form-check-label" for="inlineRadio2">Female</label>
+                </div>
+                
+            </div>
+
+            <label class="form-check-label" for="inlineRadio1">Chose Your Hobbies</label>
+            <div class="form-floating mb-3" id="hobbies">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="hobbies" id="hobbies" value="Cricket">
+                    <label class="form-check-label" for="inlineCheckbox1">dancing</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="hobbies" id="hobbies" value="Football">
+                    <label class="form-check-label" for="inlineCheckbox2">singing</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="hobbies" id="hobbies" value="Hockey">
+                    <label class="form-check-label" for="inlineCheckbox2">Travelling</label>
+                </div>
+            </div>
+
+            <label class="form-check-label" for="inlineCheckbox2">Select Your City</label>
+            <div class="dropdown form-floating mb-3">
+                <select id="myCity" name="city">
+                    <option value="">select city</option>
+                    <option value="Porbandar">Porbandar</option>
+                    <option value="Ahmedabad">Ahmedabad</option>
+                    <option value="Rajkot">Rajkot</option>
+                </select>
+                 {{!-- <div style="color: red; margin-top:3px" id="cityError"></div> --}}
+            </div>
+           
+            <div class="form-floating mt-3">
+                select photo:<input type="file" id="myfile" name="myfile">
+            </div>
+            <div class="form-floating mt-3">
+                <button class="btn btn-primary editUser" style="margin-top: 15px;" type="submit" id="submituser">Submit
+                    Data</button>
+                <button class="btn btn-primary" style="margin-top: 15px;" type="reset" id="configreset"
+                    value="reset">Reset</button>
+            </div>
+        </div>
+    </form>
+
+    <table id="example1" class="table table-bordered table-striped table-hover">
+        <thead>
+
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>address</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="bodyAppend">
+            <p>{{mydata.length}} Records Found </p>
+            {{#each mydata}}
+            <tr class="{{_id}}">
+                <td><img src="/images/{{myfile}}" style="width: 100px;" /></td>
+                <td>{{firstName}}</td>
+                <td>{{gender}}</td>
+                <td>{{address}}</td>
+                <td>
+                    <button id="{{_id}}" class="edit">Edit Details</button>
+                    <button class="delete" id="{{_id}}">Delete Item</button>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>address</th>
+                <th>Action</th>
+            </tr>
+        </tfoot>
+    </table>
+
+    <script src="/javascripts/bootstrap.bundle.min.js"></script>
+    <script src="/javascripts/jquery-3.6.0.js"></script>
+    <script src="/javascripts/jquery.validate.min.js"></script>
+    <script src="/javascripts/jquery-input-mask-phone-number.min.js"></script>
+    <script src="/javascripts/data.js"></script>
+</body>
+
+</html>
