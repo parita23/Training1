@@ -6,10 +6,10 @@ var AjaxModel = require("../schema/validationTable");
 //for uploading the image(using multer)
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "./public/images");
+    cb(null, "public/images");
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalastName);
+    cb(null, file.originalname);
   },
 });
 
@@ -30,6 +30,7 @@ router.get("/", async function (req, res, next) {
 //when we submit the form that time this add post method called
 router.post("/add", upload.single("myfile"), async function (req, res, next) {
   try {
+    console.log(req.body);
     //take if for check if already data exist then do update else add as a new user
     if (req.body._id) {
       const mybodydata = {
@@ -63,6 +64,7 @@ router.post("/add", upload.single("myfile"), async function (req, res, next) {
         myfile: req.body.myfile,
       };
       var data = await AjaxModel(mybodydata).save();
+      console.log("jjjj",data);
       if (data) {
         res.send({
           type: "success",

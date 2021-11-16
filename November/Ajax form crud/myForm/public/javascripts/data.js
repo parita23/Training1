@@ -72,6 +72,7 @@ $(document).ready(() => {
         error.insertAfter(element.parent());
     },
     submitHandler: function (form, event) {
+      
       event.preventDefault();
       //object for appending
       var demoData = new FormData();
@@ -96,6 +97,7 @@ $(document).ready(() => {
         city: $("#myCity").val(),
         myfile: $("#myfile")[0].files[0].name,
       };
+      console.log(myObj);
       //for getting one bye one key and value from above object
       for (let key in myObj) {
         demoData.append(key, myObj[key]);
@@ -109,38 +111,37 @@ $(document).ready(() => {
         processData: false,
         success: function (data) {
           if (data.type == "success") {
-            //appending data for add action
             var temp = `
-                        <tr class="${data.result._id}">
-                            <td><img src="/images/${data.result.myfile}" style="width: 100px;" /></td>
-                            <td>${data.result.firstName}</td>
-                            <td>${data.result.gender}</td>
-                            <td>${data.result.address}</td>
-                            <td><button id="${data.result._id}" class="edit">Edit Details</button>
-                            <button class="delete" id="${data.result._id}">Delete Item</button></td>
-                        </tr>
-                            
-                        `;
-            //apending data for edit action
-            $("#bodyAppend").append(temp);
-          } else {
+            <tr class="${data.result._id}">
+                <td><img src="/images/${data.result.myfile}" style="width: 100px;"/></td>
+                <td>${data.result.firstName}</td>
+                <td>${data.result.gender}</td>
+                <td>${data.result.address}</td>
+                <td><button id="${data.result._id}" class="edit">Edit Details</button>
+                <button class="delete" id="${data.result._id}">Delete Item</button></td>
+            </tr>`;
+            $('#bodyAppend').append(temp);
+          }
+
+          if(data.type == "update"){
             var temp2 = `
-                        <tr class="${data.result._id}">
-                            <td><img src="/images/${data.result.myfile}" style="width: 100px;"/></td>
-                            <td>${data.result.firstName}</td>
-                            <td>${data.result.gender}</td>
-                            <td>${data.result.address}</td>
-                            <td><button id="${data.result._id}" class="edit">Edit Details</button>
-                            <button class="delete" id="${data.result._id}">Delete Item</button></td>
-                        </tr>`;
+            <tr class="${data.result._id}">
+                <td><img src="/images/${data.result.myfile}" style="width: 100px;" /></td>
+                <td>${data.result.firstName}</td>
+                <td>${data.result.gender}</td>
+                <td>${data.result.address}</td>
+                <td><button id="${data.result._id}" class="edit">Edit Details</button>
+                <button class="delete" id="${data.result._id}">Delete Item</button></td>
+            </tr>`
 
             $("." + data.result._id).replaceWith(temp2);
             $(".edit").attr("disabled", false);
           }
+          
         },
-        error: function (e) {
-          console.log(e);
-        },
+        // error: function (e) {
+        //   console.log(e);
+        // },
       });
     },
   });
@@ -156,20 +157,20 @@ $(document).ready(() => {
       processData: false,
       success: function (data) {
         console.log("edit data is : ", data);
-        $("#floatingInput").val(data.firstName);
-        $("#floatingInput2").val(data.lastName);
-        $("#textArea").val(data.address);
-        $("#" + data.gender).attr("checked", true);
+        $("#floatingInput").val(data.data.firstName);
+        $("#floatingInput2").val(data.data.lastName);
+        $("#textArea").val(data.data.address);
+        $("#" + data.data.gender).attr("checked", true);
 
-        let hobbies = data.hobbies.split(",");
+        let hobbies = data.data.hobbies.split(",");
         $("#hobbies")
-          .find("[value=" + hobbies.join("], [value=") + "]")
-          .prop("checked", true);
+            .find("[value=" + hobbies.join("], [value=") + "]")
+            .prop("checked", true);
 
-        $("#myCity").val(data.city);
+        $("#myCity").val(data.data.city);
         $(
           '<img class="image" src="/images/' +
-            data.myfile +
+            data.data.myfile +
             '" style="width: 100px;"/>'
         ).insertAfter("#myfile");
         $("#submituser").attr("id", user_id).html("Edit user");
