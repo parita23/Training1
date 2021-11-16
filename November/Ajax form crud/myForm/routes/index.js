@@ -30,7 +30,6 @@ router.get("/", async function (req, res, next) {
 //when we submit the form that time this add post method called
 router.post("/add", upload.single("myfile"), async function (req, res, next) {
   try {
-    console.log(req.body);
     //take if for check if already data exist then do update else add as a new user
     if (req.body._id) {
       const mybodydata = {
@@ -64,7 +63,6 @@ router.post("/add", upload.single("myfile"), async function (req, res, next) {
         myfile: req.body.myfile,
       };
       var data = await AjaxModel(mybodydata).save();
-      console.log("jjjj",data);
       if (data) {
         res.send({
           type: "success",
@@ -98,6 +96,31 @@ router.get("/userDelete/:user_id", async function (req, res, next) {
     } else {
       res.send({type:"error"});
     }
+  } catch (error) {
+    res.send({type:"error", error});
+  }
+});
+
+//for sort
+router.post("/sort", async function (req, res) {
+  try {
+    
+    // sortingBy=req.body.sortingBy
+    // order=req.body.order
+    var sort={}
+    sort[req.body.sortingBy]=req.body.order;
+    var data = await AjaxModel.find().sort(sort);
+    console.log("qqqq",data);
+    if (data) {
+      res.send({
+        type: "success",
+        result: data,
+      });
+    }
+    else{
+      console.log("error");
+    }
+
   } catch (error) {
     res.send({type:"error", error});
   }

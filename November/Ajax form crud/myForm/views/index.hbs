@@ -43,7 +43,7 @@
                     <input class="form-check-input" type="radio" name="gender" id="female" value="female" />
                     <label class="form-check-label" for="inlineRadio2">Female</label>
                 </div>
-                
+
             </div>
 
             <label class="form-check-label" for="inlineRadio1">Chose Your Hobbies</label>
@@ -70,9 +70,9 @@
                     <option value="Ahmedabad">Ahmedabad</option>
                     <option value="Rajkot">Rajkot</option>
                 </select>
-                 {{!-- <div style="color: red; margin-top:3px" id="cityError"></div> --}}
+                {{!-- <div style="color: red; margin-top:3px" id="cityError"></div> --}}
             </div>
-           
+
             <div class="form-floating mt-3">
                 select photo:<input type="file" id="myfile" name="myfile">
             </div>
@@ -90,9 +90,12 @@
 
             <tr>
                 <th>Image</th>
-                <th>Name</th>
-                <th>Gender</th>
-                <th>address</th>
+                <th><a class="label label-info name" sortingOrder="1" id="firstName" href="javascript:void(0)">Name</a>
+                </th>
+                <th><a class="label label-info name" sortingOrder="1" id="gender" href="javascript:void(0)">Gender</a>
+                </th>
+                <th><a class="label label-info name" sortingOrder="1" id="address" href="javascript:void(0)">Address</a>
+                </th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -122,6 +125,19 @@
         </tfoot>
     </table>
 
+   <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
     <script src="/javascripts/bootstrap.bundle.min.js"></script>
     <script src="/javascripts/jquery-3.6.0.js"></script>
     <script src="/javascripts/jquery.validate.min.js"></script>

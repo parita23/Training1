@@ -97,7 +97,6 @@ $(document).ready(() => {
         city: $("#myCity").val(),
         myfile: $("#myfile")[0].files[0].name,
       };
-      console.log(myObj);
       //for getting one bye one key and value from above object
       for (let key in myObj) {
         demoData.append(key, myObj[key]);
@@ -137,7 +136,7 @@ $(document).ready(() => {
             $("." + data.result._id).replaceWith(temp2);
             $(".edit").attr("disabled", false);
           }
-          
+          $("#formEx")[0].reset();
         },
         // error: function (e) {
         //   console.log(e);
@@ -156,7 +155,7 @@ $(document).ready(() => {
       contentType: false,
       processData: false,
       success: function (data) {
-        console.log("edit data is : ", data);
+      
         $("#floatingInput").val(data.data.firstName);
         $("#floatingInput2").val(data.data.lastName);
         $("#textArea").val(data.data.address);
@@ -195,5 +194,42 @@ $(document).ready(() => {
       }).done(function (data) {
         $("tr." + user_id).remove();
       });
+    });
+
+    //sort by name
+
+    $(".name").on("click", function () {
+      console.log("jjjjj")
+      var obj={
+        order:$(this).attr("sortingOrder"),
+        sortingBy: $(this).attr("id"),
+      }
+      if( $(this).attr("sortingOrder")==1){
+        $(this).attr("sortingOrder", -1)
+      }else{
+         $(this).attr("sortingOrder",1)
+      }
+      $.ajax({
+        url: "/sort",
+        method: "POST",
+        data: obj,
+        success: function (data) {
+          console.log("data",data)
+          $("#bodyAppend").empty()
+          for(var test of data.result){
+            console.log("hhh",test.firstName);
+            var temp3= `
+            <tr class="${test._id}">
+                <td><img src="/images/${test.myfile}" style="width: 100px;"/></td>
+                <td>${test.firstName}</td>
+                <td>${test.gender}</td>
+                <td>${test.address}</td>
+                <td><button id="${test._id}" class="edit">Edit Details</button>
+                <button class="delete" id="${test._id}">Delete Item</button></td>
+            </tr>`;
+            $('#bodyAppend').append(temp3);
+          }
+        },
+      })
     });
 });
