@@ -1,3 +1,6 @@
+var sortingOrder;
+var sortingParameter;
+var page;
 $(document).ready(() => {
   let userId;
   //validation
@@ -21,9 +24,9 @@ $(document).ready(() => {
       city: {
         required: true,
       },
-      myfile:{
-          required:true
-      }
+      myfile: {
+        required: true,
+      },
     },
     messages: {
       firstName: {
@@ -44,9 +47,9 @@ $(document).ready(() => {
       city: {
         required: "Please select any city",
       },
-      myfile:{
-          required:"please select any image file"
-      }
+      myfile: {
+        required: "please select any image file",
+      },
     },
     highlight: function (element) {
       $(element).addClass("errorClass");
@@ -69,10 +72,9 @@ $(document).ready(() => {
                      else {
                          error.insertAfter(element)
                      } --}}*/
-        error.insertAfter(element.parent());
+      error.insertAfter(element.parent());
     },
     submitHandler: function (form, event) {
-      
       event.preventDefault();
       //object for appending
       var demoData = new FormData();
@@ -119,10 +121,10 @@ $(document).ready(() => {
                 <td><button id="${data.result._id}" class="edit">Edit Details</button>
                 <button class="delete" id="${data.result._id}">Delete Item</button></td>
             </tr>`;
-            $('#bodyAppend').append(temp);
+            $("#bodyAppend").append(temp);
           }
 
-          if(data.type == "update"){
+          if (data.type == "update") {
             var temp2 = `
             <tr class="${data.result._id}">
                 <td><img src="/images/${data.result.myfile}" style="width: 100px;" /></td>
@@ -131,7 +133,7 @@ $(document).ready(() => {
                 <td>${data.result.address}</td>
                 <td><button id="${data.result._id}" class="edit">Edit Details</button>
                 <button class="delete" id="${data.result._id}">Delete Item</button></td>
-            </tr>`
+            </tr>`;
 
             $("." + data.result._id).replaceWith(temp2);
             $(".edit").attr("disabled", false);
@@ -155,7 +157,6 @@ $(document).ready(() => {
       contentType: false,
       processData: false,
       success: function (data) {
-      
         $("#floatingInput").val(data.data.firstName);
         $("#floatingInput2").val(data.data.lastName);
         $("#textArea").val(data.data.address);
@@ -163,8 +164,8 @@ $(document).ready(() => {
 
         let hobbies = data.data.hobbies.split(",");
         $("#hobbies")
-            .find("[value=" + hobbies.join("], [value=") + "]")
-            .prop("checked", true);
+          .find("[value=" + hobbies.join("], [value=") + "]")
+          .prop("checked", true);
 
         $("#myCity").val(data.data.city);
         $(
@@ -196,29 +197,31 @@ $(document).ready(() => {
       });
     });
 
-    //sort by name
+  //sort by name
 
-    $(".name").on("click", function () {
-      console.log("jjjjj")
-      var obj={
-        order:$(this).attr("sortingOrder"),
-        sortingBy: $(this).attr("id"),
-      }
-      if( $(this).attr("sortingOrder")==1){
-        $(this).attr("sortingOrder", -1)
-      }else{
-         $(this).attr("sortingOrder",1)
-      }
-      $.ajax({
-        url: "/sort",
-        method: "POST",
-        data: obj,
-        success: function (data) {
-          console.log("data",data)
-          $("#bodyAppend").empty()
-          for(var test of data.result){
-            console.log("hhh",test.firstName);
-            var temp3= `
+  $(".name").on("click", function () {
+    sortingOrder = $(this).attr("sortingOrder");
+    sortingParameter = $(this).attr("id");
+    console.log("jjjjj");
+    var obj = {
+      order: $(this).attr("sortingOrder"),
+      sortingId: $(this).attr("id"),
+    };
+    if ($(this).attr("sortingOrder") == 1) {
+      $(this).attr("sortingOrder", -1);
+    } else {
+      $(this).attr("sortingOrder", 1);
+    }
+    $.ajax({
+      url: "/sort",
+      method: "POST",
+      data: obj,
+      success: function (data) {
+        console.log("data", data);
+        $("#bodyAppend").empty();
+        for (var test of data.result) {
+          console.log("hhh", test.firstName);
+          var temp3 = `
             <tr class="${test._id}">
                 <td><img src="/images/${test.myfile}" style="width: 100px;"/></td>
                 <td>${test.firstName}</td>
@@ -227,9 +230,71 @@ $(document).ready(() => {
                 <td><button id="${test._id}" class="edit">Edit Details</button>
                 <button class="delete" id="${test._id}">Delete Item</button></td>
             </tr>`;
-            $('#bodyAppend').append(temp3);
+          $("#bodyAppend").append(temp3);
+        }
+      },
+    });
+  });
+
+  $(document)
+    .off("click", ".pageClick")
+    .on("click", ".pageClick", function () {
+      console.log("sortingOrder",sortingOrder);
+      console.log("sortingParameter",sortingParameter);
+      page = $(this).attr("page");
+      console.log(page);
+      let pageObj = {
+        type: "pagination",
+        page: $(this).attr("page"),
+        order: sortingOrder,
+        sortingId: sortingParameter,
+      };
+      $.ajax({
+        url: "/sort",
+        type: "POST",
+        data: pageObj,
+        success: function (data) {
+          console.log("aaaaaaaaaaaaaaaaa",data);
+          if (data.type == "success") {
+            $("#bodyAppend").empty();
+            if (data.result) {
+              for (var test of data.result) {
+                console.log("hhh", test.firstName);
+                var temp4 = `
+                <tr class="${test._id}">
+                    <td><img src="/images/${test.myfile}" style="width: 100px;"/></td>
+                    <td>${test.firstName}</td>
+                    <td>${test.gender}</td>
+                    <td>${test.address}</td>
+                    <td><button id="${test._id}" class="edit">Edit Details</button>
+                    <button class="delete" id="${test._id}">Delete Item</button></td>
+                </tr>`;
+                $("#bodyAppend").append(temp4);
+              }
+            }
           }
         },
-      })
+        error: function (err) {
+          console.log(err);
+        },
+      });
+    });
+    $(".se").on("click", function () {
+      console.log("ggg");
+      var myObj = {
+        type: "searching",
+        search: $(".search").val()
+      };
+      console.log("search",myObj);
+      $.ajax({
+        url: "/sort",
+        method: "POST",
+        data:myObj,
+        success: function (data) {
+          console.log("data",data);
+          
+        },
+      });
     });
 });
+

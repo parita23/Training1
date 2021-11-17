@@ -1,13 +1,12 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
-    <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" />
+    <link href="/stylesheets/style.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -15,13 +14,13 @@
         <div class="col-md-5" style="margin: auto;">
             <div class="form-floating">
                 <input type="text" name="firstName" class="form-control" id="floatingInput"
-                    placeholder="Enter your first name">
+                    placeholder="Enter your first name" />
                 <label>Enter First Name</label>
             </div>
 
             <div class="form-floating">
                 <input type="text" name="lastName" class="form-control" id="floatingInput2"
-                    placeholder="Enter your last name">
+                    placeholder="Enter your last name" />
                 <label>Enter last Name</label>
             </div>
 
@@ -49,15 +48,15 @@
             <label class="form-check-label" for="inlineRadio1">Chose Your Hobbies</label>
             <div class="form-floating mb-3" id="hobbies">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="hobbies" id="hobbies" value="Cricket">
+                    <input class="form-check-input" type="checkbox" name="hobbies" id="hobbies" value="Cricket" />
                     <label class="form-check-label" for="inlineCheckbox1">dancing</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="hobbies" id="hobbies" value="Football">
+                    <input class="form-check-input" type="checkbox" name="hobbies" id="hobbies" value="Football" />
                     <label class="form-check-label" for="inlineCheckbox2">singing</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="hobbies" id="hobbies" value="Hockey">
+                    <input class="form-check-input" type="checkbox" name="hobbies" id="hobbies" value="Hockey" />
                     <label class="form-check-label" for="inlineCheckbox2">Travelling</label>
                 </div>
             </div>
@@ -70,19 +69,36 @@
                     <option value="Ahmedabad">Ahmedabad</option>
                     <option value="Rajkot">Rajkot</option>
                 </select>
-                {{!-- <div style="color: red; margin-top:3px" id="cityError"></div> --}}
+                {{! <div style="color: red; margin-top:3px" id="cityError"></div> }}
             </div>
 
             <div class="form-floating mt-3">
-                select photo:<input type="file" id="myfile" name="myfile">
+                select photo:<input type="file" id="myfile" name="myfile" />
             </div>
-            <div class="form-floating mt-3">
+            <div class="form-floating m-3">
                 <button class="btn btn-primary editUser" style="margin-top: 15px;" type="submit" id="submituser">Submit
                     Data</button>
                 <button class="btn btn-primary" style="margin-top: 15px;" type="reset" id="configreset"
                     value="reset">Reset</button>
             </div>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control search" placeholder="search here" aria-label="search here"
+                    aria-describedby="basic-addon2" />
+            <div class="dropdown input-group-text">
+                <select id="myCity" name="city">
+                    <option value="">Gender</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                
+                </select>
+                
+            </div>
+                <span class="input-group-text se" id="basic-addon2">search</span>
+            </div>
         </div>
+        </div>
+
+
     </form>
 
     <table id="example1" class="table table-bordered table-striped table-hover">
@@ -90,11 +106,14 @@
 
             <tr>
                 <th>Image</th>
-                <th><a class="label label-info name" sortingOrder="1" id="firstName" href="javascript:void(0)">Name</a>
+                <th><a class="label label-info name" sortingOrder="1" id="firstName" task="sorting"
+                        href="javascript:void(0)">Name</a>
                 </th>
-                <th><a class="label label-info name" sortingOrder="1" id="gender" href="javascript:void(0)">Gender</a>
+                <th><a class="label label-info name" sortingOrder="1" id="gender" task="sorting"
+                        href="javascript:void(0)">Gender</a>
                 </th>
-                <th><a class="label label-info name" sortingOrder="1" id="address" href="javascript:void(0)">Address</a>
+                <th><a class="label label-info name" sortingOrder="1" id="address" task="sorting"
+                        href="javascript:void(0)">Address</a>
                 </th>
                 <th>Action</th>
             </tr>
@@ -125,19 +144,20 @@
         </tfoot>
     </table>
 
-   <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-end">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1">Previous</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link pageClick" id="1" page="1">1</a></li>
+            <li class="page-item"><a class="page-link pageClick" id="2" page="2">2</a></li>
+            <li class="page-item"><a class="page-link pageClick" id="3" page="3">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
+
     <script src="/javascripts/bootstrap.bundle.min.js"></script>
     <script src="/javascripts/jquery-3.6.0.js"></script>
     <script src="/javascripts/jquery.validate.min.js"></script>
