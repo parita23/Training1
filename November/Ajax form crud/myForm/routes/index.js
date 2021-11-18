@@ -18,8 +18,13 @@ const upload = multer({ storage: storage });
 router.get("/", async function (req, res, next) {
   try {
     let data = await AjaxModel.find().sort({ _id: -1 }).skip(0).limit(3).lean();
+    let userCount = await AjaxModel.countDocuments();
+    let page = [];
+    for(i=1; i<=Math.ceil(userCount/3); i++){
+      page[i] = i;
+    }
     if (data) {
-      res.render("index", { mydata: data });
+      res.render("index", { mydata: data , page});
     } else {
       res.send({ type: "error" });
     }
@@ -107,23 +112,51 @@ router.post("/sort", async function (req, res) {
   var sort = {};
   try {
     console.log(req.body);
+    let total = await AjaxModel.find().count();
+    
+   var page = Math.ceil(total/3);
+
     if(req.body.type == "pagination"){
-      
+      console.log("fhhhhff");
       var skipValue= 3 *(req.body.page-1);
-      console.log("skippppp",skipValue);
+      // console.log("skippppp",skipValue);
       sort[req.body.sortingId] = req.body.order;
       var data = await AjaxModel.find({}).sort(sort).skip(skipValue).limit(3).lean();
       res.send({
         type: "success",
         result: data,
+        page: page,
       });
-    }else if(req.body.type == "searching"){
-      const mybodydata = {
-        search: req.body.search,
-      };
-      console.log("myff",mybodydata)
+    }
+    
+    if(req.body.type == "searching"){
+      //  console.log("myff",mybodydata)
+
+        let condition = {};
+        // console.log("aaaaaaaaaaaaaaa", req.body);
+
+        if(req.body.search){
+          condition ={
+           $or: [{ firstName: {$regex : req.body.search, $options:"i",}, }, { address: {$regex : req.body.search, $options:"i",}, }],}
+        }
+
+       if(req.body.gender){
+         condition.gender = req.body.gender;
+       }
+
+       console.log("condition",JSON.stringify(condition));
+
+
+       var data = await AjaxModel.find(condition);
+       console.log(data)
+       res.send({
+        type: "success",
+        result: data,
+      });
+
     } 
-    else{
+
+    if(req.body.type == "sorting"){
       sort[req.body.sortingId] = req.body.order;
       console.log("sort",sort);
        var data = await AjaxModel.find({}).sort(sort).limit(3).lean();
@@ -134,6 +167,7 @@ router.post("/sort", async function (req, res) {
       });
 
     }
+    
   } catch (error) {
     console.log(error);
   }

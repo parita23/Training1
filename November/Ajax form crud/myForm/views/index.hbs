@@ -85,10 +85,10 @@
                 <input type="text" class="form-control search" placeholder="search here" aria-label="search here"
                     aria-describedby="basic-addon2" />
             <div class="dropdown input-group-text">
-                <select id="myCity" name="city">
+                <select id="gender" name="gender">
                     <option value="">Gender</option>
-                    <option value="Female">Female</option>
-                    <option value="Male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
                 
                 </select>
                 
@@ -146,15 +146,11 @@
 
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-end">
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link pageClick" id="1" page="1">1</a></li>
-            <li class="page-item"><a class="page-link pageClick" id="2" page="2">2</a></li>
-            <li class="page-item"><a class="page-link pageClick" id="3" page="3">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-            </li>
+           
+            {{#each page}}
+            <li class="page-item"><a class="page-link pageClick" id="1" page="{{this}}">{{this}}</a></li>
+            {{/each}}
+            
         </ul>
     </nav>
 

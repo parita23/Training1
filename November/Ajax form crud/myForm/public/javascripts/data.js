@@ -202,8 +202,8 @@ $(document).ready(() => {
   $(".name").on("click", function () {
     sortingOrder = $(this).attr("sortingOrder");
     sortingParameter = $(this).attr("id");
-    console.log("jjjjj");
     var obj = {
+      type: "sorting",
       order: $(this).attr("sortingOrder"),
       sortingId: $(this).attr("id"),
     };
@@ -239,8 +239,8 @@ $(document).ready(() => {
   $(document)
     .off("click", ".pageClick")
     .on("click", ".pageClick", function () {
-      console.log("sortingOrder",sortingOrder);
-      console.log("sortingParameter",sortingParameter);
+      console.log("sortingOrder", sortingOrder);
+      console.log("sortingParameter", sortingParameter);
       page = $(this).attr("page");
       console.log(page);
       let pageObj = {
@@ -254,12 +254,11 @@ $(document).ready(() => {
         type: "POST",
         data: pageObj,
         success: function (data) {
-          console.log("aaaaaaaaaaaaaaaaa",data);
+          console.log("aaaaaaaaaaaaaaaaa", data);
           if (data.type == "success") {
             $("#bodyAppend").empty();
             if (data.result) {
               for (var test of data.result) {
-                console.log("hhh", test.firstName);
                 var temp4 = `
                 <tr class="${test._id}">
                     <td><img src="/images/${test.myfile}" style="width: 100px;"/></td>
@@ -271,6 +270,12 @@ $(document).ready(() => {
                 </tr>`;
                 $("#bodyAppend").append(temp4);
               }
+
+              $(".pagination").empty();
+              for (var i = 1; i <= data.page; i++) {
+                var temp4 = `<li class="page-item"><a class="page-link pageClick" id="${i}" page="${i}">${i}</a></li>`;
+                $(".pagination").append(temp4);
+              }
             }
           }
         },
@@ -279,22 +284,41 @@ $(document).ready(() => {
         },
       });
     });
-    $(".se").on("click", function () {
-      console.log("ggg");
-      var myObj = {
-        type: "searching",
-        search: $(".search").val()
-      };
-      console.log("search",myObj);
-      $.ajax({
-        url: "/sort",
-        method: "POST",
-        data:myObj,
-        success: function (data) {
-          console.log("data",data);
-          
-        },
-      });
+  $(".se").on("click", function () {
+    console.log("ggg");
+    var myObj = {
+      type: "searching",
+      search: $(".search").val(),
+      gender: $("#gender").val(),
+    };
+    console.log("search", myObj);
+    $.ajax({
+      url: "/sort",
+      method: "POST",
+      data: myObj,
+      success: function (data) {
+        console.log("data", data);
+        if (data.type == "success") {
+          $("#bodyAppend").empty();
+          if (data.result) {
+            for (var test of data.result) {
+              var temp5 = `
+                <tr class="${test._id}">
+                    <td><img src="/images/${test.myfile}" style="width: 100px;"/></td>
+                    <td>${test.firstName}</td>
+                    <td>${test.gender}</td>
+                    <td>${test.address}</td>
+                    <td><button id="${test._id}" class="edit">Edit Details</button>
+                    <button class="delete" id="${test._id}">Delete Item</button></td>
+                </tr>`;
+              $("#bodyAppend").append(temp5);
+            }
+          }
+        }
+      },
+      error: function (err) {
+        console.log(err);
+      },
     });
+  });
 });
-
