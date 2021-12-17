@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/error.css">
+
+</head>
+
+<body>
+    <form id="myform" method="post">
+        <button type="button" class="logout" style="float: right;">Logout</button>
+        <div class="col-md-5" style="margin: auto;">
+            <div class="form-floating">
+                <input type="text" name="name" class="form-control" id="floatingInput" placeholder="name">
+                <label>Enter Name</label>
+            </div>
+
+            <div class="form-floating mt-3">
+                <input type="text" class="form-control" id="floatingInput1" placeholder="name@example.com" name="email">
+                <label>Email Address</label>
+
+            </div>
+
+            <div class="form-floating mt-3">
+                <input type="text" class="form-control" id="floatingMobile" placeholder="mobile NO" name="mobile"
+                    value="{{mobile}}">
+                <label>Mobile</label>
+
+            </div>
+            <div class="form-floating mt-3">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password"
+                    value="{{password}}">
+                <label>Password</label>
+
+            </div>
+            <div class="form-floating mt-3">
+                <button class="btn btn-primary" style="margin-top: 15px;" type="submit">Add user</button>
+            </div>
+        </div>
+
+    </form>
+
+    <br /><br />
+
+    <button type="button" class="btn btn-secondary export">Export</button>
+    <table id="example1" class="table table-bordered table-striped table-hover">
+        <thead>
+
+            <tr>
+
+                <th><a class="label label-info name" id="name">Name</a> </th>
+                <th><a class="label label-info name" id="email">Email</a></th>
+                <th><a class="label label-info name" id="mobile">Mobile</a></th>
+
+            </tr>
+        </thead>
+        <tbody id="bodyAppend">
+
+            {{#each data}}
+            <tr class="{{_id}}">
+                <td>{{this.name}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.mobile}}</td>
+
+            </tr>
+            {{/each}}
+        </tbody>
+        <tfoot>
+            <tr>
+
+                <th><a class="label label-info name" id="name">Name</a> </th>
+                <th><a class="label label-info name" id="email">Email</a></th>
+                <th><a class="label label-info name" id="mobile">Mobile</a></th>
+
+            </tr>
+        </tfoot>
+    </table>
+    <form id="importForm" method="post" enctype="multipart/form-data">
+        <label for="file"> file input</label>
+        <input type="file" class="form-control-file" id="file" name="file">
+        <button type="submit" class="btn btn-secondary import" id="import">Import</button>
+    </form>
+
+    <table id="csvTbl" class="csvTbl table table-hover" >
+        <h3 class="dataId">data</h3>
+        <thead>
+        
+            <tr id="trdata" class="trdata">
+                <th>Select</th>
+                <th>First row</th>
+                <th>Second row</th>
+                <th>Fields</th>
+            </tr>
+        </thead>
+    </table>
+
+    <button type="submit" class="btn btn-secondary upload" id="upload">upload</button>
+
+    <script src="/javascripts/bootstrap.bundle.min.js"></script>
+    <script src="/javascripts/jquery-3.6.0.js"></script>
+    <script src="/javascripts/jquery.validate.min.js"></script>
+    <script src="/javascripts/jquery-input-mask-phone-number.min.js"></script>
+    <script src="/javascripts/additional-methods.min.js"></script>
+    <script src="/javascripts/api.js"></script>
+</body>
+
+</html>
