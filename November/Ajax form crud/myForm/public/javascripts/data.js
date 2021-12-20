@@ -140,9 +140,7 @@ $(document).ready(() => {
           }
           $("#formEx")[0].reset();
         },
-        // error: function (e) {
-        //   console.log(e);
-        // },
+    
       });
     },
   });
@@ -217,10 +215,9 @@ $(document).ready(() => {
       method: "POST",
       data: obj,
       success: function (data) {
-        console.log("data", data);
+       
         $("#bodyAppend").empty();
         for (var test of data.result) {
-          console.log("hhh", test.firstName);
           var temp3 = `
             <tr class="${test._id}">
                 <td><img src="/images/${test.myfile}" style="width: 100px;"/></td>
@@ -235,14 +232,14 @@ $(document).ready(() => {
       },
     });
   });
-
+  //pagination click
   $(document)
     .off("click", ".pageClick")
     .on("click", ".pageClick", function () {
-      console.log("sortingOrder", sortingOrder);
-      console.log("sortingParameter", sortingParameter);
+      //taking page id
       page = $(this).attr("page");
-      console.log(page);
+      //create object that pass to ajax then send into backend
+      //sortingOrder and sortingParameter used in globally used in that for sorting in pagination
       let pageObj = {
         type: "pagination",
         page: $(this).attr("page"),
@@ -254,11 +251,12 @@ $(document).ready(() => {
         type: "POST",
         data: pageObj,
         success: function (data) {
-          console.log("aaaaaaaaaaaaaaaaa", data);
           if (data.type == "success") {
             $("#bodyAppend").empty();
             if (data.result) {
+              //fetch one by one data from total data
               for (var test of data.result) {
+                //append all data
                 var temp4 = `
                 <tr class="${test._id}">
                     <td><img src="/images/${test.myfile}" style="width: 100px;"/></td>
@@ -270,8 +268,8 @@ $(document).ready(() => {
                 </tr>`;
                 $("#bodyAppend").append(temp4);
               }
-
               $(".pagination").empty();
+              //take for loop for dynamically add the page when data is insert then its incremented
               for (var i = 1; i <= data.page; i++) {
                 var temp4 = `<li class="page-item"><a class="page-link pageClick" id="${i}" page="${i}">${i}</a></li>`;
                 $(".pagination").append(temp4);
@@ -284,20 +282,19 @@ $(document).ready(() => {
         },
       });
     });
+    //execute when search button click
   $(".se").on("click", function () {
-    console.log("ggg");
+    //search variable take to get value from user & gender is used for search by gender also
     var myObj = {
       type: "searching",
       search: $(".search").val(),
       gender: $("#gender").val(),
     };
-    console.log("search", myObj);
     $.ajax({
       url: "/sort",
       method: "POST",
       data: myObj,
       success: function (data) {
-        console.log("data", data);
         if (data.type == "success") {
           $("#bodyAppend").empty();
           if (data.result) {
@@ -315,6 +312,52 @@ $(document).ready(() => {
             }
           }
         }
+      },
+      error: function (err) {
+        console.log(err);
+      },
+    });
+  });
+  //execute when click on export for csv download
+  $(".export").on("click", function () {
+    var myObj = {
+      type: "exporting",
+    };
+    $.ajax({
+      url: "/sort",
+      method: "POST",
+      data: myObj,
+      success: function (data) {
+        var link = $("<a />");
+        link.attr("download", "parita.csv");
+        let url = "http://127.0.0.1:3000/csvFile/" + data.fileName;
+        link.attr("href", url);
+        $("body").append(link);
+        link[0].click();
+        $("body").remove(link);
+      },
+      error: function (err) {
+        console.log(err);
+      },
+    });
+  });
+//execute mail when export to mail is executed
+  $(".exportMail").on("click", function () {
+    let value = prompt("Enter your Mail");
+    if (value == "") {
+      alert("please enter email address");
+    } else {
+      var myObj = {
+        type: "exportEmail",
+        value: value,
+      };
+    }
+    $.ajax({
+      url: "/sort",
+      method: "POST",
+      data: myObj,
+      success: function (data) {
+        console.log("data", data);
       },
       error: function (err) {
         console.log(err);

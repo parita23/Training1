@@ -2,6 +2,10 @@ var express = require("express");
 var router = express.Router();
 const multer = require("multer");
 var AjaxModel = require("../schema/validationTable");
+const { Parser } = require("json2csv");
+var moment = require("moment");
+const fs = require("fs");
+const nodemailer = require("nodemailer");
 
 //for uploading the image(using multer)
 const storage = multer.diskStorage({
@@ -20,11 +24,11 @@ router.get("/", async function (req, res, next) {
     let data = await AjaxModel.find().sort({ _id: -1 }).skip(0).limit(3).lean();
     let userCount = await AjaxModel.countDocuments();
     let page = [];
-    for(i=1; i<=Math.ceil(userCount/3); i++){
+    for (i = 1; i <= Math.ceil(userCount / 3); i++) {
       page[i] = i;
     }
     if (data) {
-      res.render("index", { mydata: data , page});
+      res.render("index", { mydata: data, page });
     } else {
       res.send({ type: "error" });
     }
@@ -106,68 +110,149 @@ router.get("/userDelete/:user_id", async function (req, res, next) {
   }
 });
 
-//for sort
+//Router for sorting,searching ,pagination,csv Download and csv send to mail
 router.post("/sort", async function (req, res) {
-  
   var sort = {};
   try {
-    console.log(req.body);
+    //find total data and count number of records.
+    let data = await AjaxModel.find();
     let total = await AjaxModel.find().count();
-    
-   var page = Math.ceil(total/3);
+    //math.ceil method is used for show number of record into one page.
+    var page = Math.ceil(total / 3);
 
-    if(req.body.type == "pagination"){
-      console.log("fhhhhff");
-      var skipValue= 3 *(req.body.page-1);
-      // console.log("skippppp",skipValue);
+    if (req.body.type == "pagination") {
+      //skipvalue is used for number of record skip per page
+      var skipValue = 3 * (req.body.page - 1);
+      //sort[]is used for when we write robo 3t query that type of structure create by following
       sort[req.body.sortingId] = req.body.order;
-      var data = await AjaxModel.find({}).sort(sort).skip(skipValue).limit(3).lean();
+      //and then sort,skip and limit function fire for pagination and store in data variable
+      data = await AjaxModel.find({})
+        .sort(sort)
+        .skip(skipValue)
+        .limit(3)
+        .lean();
       res.send({
         type: "success",
         result: data,
         page: page,
       });
     }
-    
-    if(req.body.type == "searching"){
-      //  console.log("myff",mybodydata)
+    //when type is perform folllowing code is executed
+    if (req.body.type == "searching") {
+      //take condition object null when search any then push value on this null object
+      let condition = {};
+      if (req.body.search) {
+        condition = {
+          //search by firstName or condition
+          //regex is used for when we search any 1 or 2 letter then display matches
+          //option i used for ignore case means capital or small both are allow
+          $or: [
+            { firstName: { $regex: req.body.search, $options: "i" } },
+            { address: { $regex: req.body.search, $options: "i" } },
+          ],
+        };
+      }
 
-        let condition = {};
-        // console.log("aaaaaaaaaaaaaaa", req.body);
-
-        if(req.body.search){
-          condition ={
-           $or: [{ firstName: {$regex : req.body.search, $options:"i",}, }, { address: {$regex : req.body.search, $options:"i",}, }],}
-        }
-
-       if(req.body.gender){
-         condition.gender = req.body.gender;
-       }
-
-       console.log("condition",JSON.stringify(condition));
-
-
-       var data = await AjaxModel.find(condition);
-       console.log(data)
-       res.send({
-        type: "success",
-        result: data,
-      });
-
-    } 
-
-    if(req.body.type == "sorting"){
-      sort[req.body.sortingId] = req.body.order;
-      console.log("sort",sort);
-       var data = await AjaxModel.find({}).sort(sort).limit(3).lean();
-      console.log("data",data);
+      if (req.body.gender) {
+        //search by gender
+        condition.gender = req.body.gender;
+      }
+      //what we can search that pass to our find method
+      data = await AjaxModel.find(condition);
       res.send({
         type: "success",
         result: data,
       });
-
     }
-    
+    //when we perform sorting
+    if (req.body.type == "sorting") {
+      sort[req.body.sortingId] = req.body.order;
+      data = await AjaxModel.find({}).sort(sort).limit(3).lean();
+      console.log("data", data);
+      res.send({
+        type: "success",
+        result: data,
+      });
+    }
+    //when we perform csv download that time run
+    if (req.body.type == "exporting") {
+      //take fields for which fiels we want to download in csv
+      const fields = [
+        { lable: "First name", value: "firstName" },
+        { lable: "Last name", value: "lastName" },
+        { lable: "Address", value: "address" },
+        { lable: "Gender", value: "gender" },
+        { lable: "Hobbies", value: "hobbies" },
+        { lable: "City", value: "city" },
+      ];
+      //convert into JSON to CSV for  that we install npm JSON2CSV
+      const parser = new Parser({ fields });
+      const csv = parser.parse(data);
+      //in fileName store the data in which format you want to dowanload.
+      //moment() is used for current time means appent at a time csv.for that we install npm momement
+      let fileName =
+        "exportData-" + moment().format("YYYY-MM-DD hh:mm") + ".csv";
+        console.log("bad luck",fileName)
+      //we create one folder csvFile for uploading our csv to that folder
+      fs.writeFileSync("public/csvFile/" + fileName, csv)
+      res.send({
+        type: "success",
+        result: data,
+        fileName: fileName,
+      });
+    }
+    //execute when export to mail button click 
+    if (req.body.type == "exportEmail") {
+      const fields = [
+        { lable: "First name", value: "firstName" },
+        { lable: "Last name", value: "lastName" },
+        { lable: "Address", value: "address" },
+        { lable: "Gender", value: "gender" },
+        { lable: "Hobbies", value: "hobbies" },
+        { lable: "City", value: "city" },
+      ];
+      const parser = new Parser({ fields });
+      const csv = parser.parse(data);
+      // console.log(csv);
+
+      let fileName =
+        "exportData-" + moment().format("YYYY-MM-DD hh:mm") + ".csv";
+
+      fs.writeFileSync("public/csvFile/" + fileName, csv);
+      if (data) {
+        let url = "http://127.0.0.1:3000/csvFile/" + fileName;
+
+        async function main() {
+          let testAccount = await nodemailer.createTestAccount();
+          let transporter = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+              user: "test.paritalearning@gmail.com", // generated ethereal user
+              pass: "Parita@23", // generated ethereal password
+            },
+          });
+
+          // send mail with defined transport object
+          let info = await transporter.sendMail({
+            from: "pariganatra232@gmail.com", // sender address
+            to: req.body.value, // list of receivers
+            subject: "csv file download", // Subject line
+            text: "download", // plain text body
+            //for attaching csv data as file
+            attachments: [
+              {
+                path: url,
+              },
+            ],
+          });
+          console.log("Message sent: %s", info.messageId);
+          console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+        }
+        main().catch(console.error);
+      } else {
+        console.log("error", err);
+      }
+    }
   } catch (error) {
     console.log(error);
   }
