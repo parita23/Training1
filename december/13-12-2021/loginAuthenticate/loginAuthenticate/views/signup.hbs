@@ -1,13 +1,12 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/stylesheets/error.css">
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/stylesheets/error.css" />
 
 </head>
 
@@ -16,25 +15,26 @@
         <button type="button" class="logout" style="float: right;">Logout</button>
         <div class="col-md-5" style="margin: auto;">
             <div class="form-floating">
-                <input type="text" name="name" class="form-control" id="floatingInput" placeholder="name">
+                <input type="text" name="name" class="form-control" id="floatingInput" placeholder="name" />
                 <label>Enter Name</label>
             </div>
 
             <div class="form-floating mt-3">
-                <input type="text" class="form-control" id="floatingInput1" placeholder="name@example.com" name="email">
+                <input type="text" class="form-control" id="floatingInput1" placeholder="name@example.com"
+                    name="email" />
                 <label>Email Address</label>
 
             </div>
 
             <div class="form-floating mt-3">
                 <input type="text" class="form-control" id="floatingMobile" placeholder="mobile NO" name="mobile"
-                    value="{{mobile}}">
+                    value="{{mobile}}" />
                 <label>Mobile</label>
 
             </div>
             <div class="form-floating mt-3">
                 <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password"
-                    value="{{password}}">
+                    value="{{password}}" />
                 <label>Password</label>
 
             </div>
@@ -82,43 +82,57 @@
     </table>
     <form id="importForm" method="post" enctype="multipart/form-data">
         <label for="file"> file input</label>
-        <input type="file" class="form-control-file" id="file" name="file">
-        <button type="submit" class="btn btn-primary import" id="import" data-bs-toggle="modal" data-bs-target="#exampleModal">Import</button>
+        <input type="file" class="form-control-file" id="file" name="file" />
+        <button type="submit" class="btn btn-primary import" id="import" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">Import</button>
 
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5><br><br>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-         <table id="csvTbl" class="csvTbl table table-hover" >
-        <h3 class="dataId">data</h3>
-        <thead>
-        
-            <tr id="trdata" class="trdata">
-                <th>Select</th>
-                <th>First row</th>
-                <th>Second row</th>
-                <th>Fields</th>
-            </tr>
-        </thead>
-    </table>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary upload" id="upload">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-        
+                    {{!-- <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Enter field" id="fieldName"
+                            aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                        <span type="submit" class="btn btn-primary field">Add</span>
+                    </div> --}}
+
+                    <div class="modal-body">
+                        <table id="csvTbl" class="csvTbl table table-hover">
+                            <h3 class="dataId">data</h3>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="true" noHeader="true" id="headerOrNot" name="a">
+                                <label class="form-check-label" for="flexCheckDefault" value="check">
+                                    if you have not checked header
+                                </label>
+                            </div>
+                            <thead>
+
+                                <tr id="trdata" class="trdata">
+                                    <th>Select</th>
+                                    <th>First row</th>
+                                    <th>Second row</th>
+                                    <th>Fields</th>
+                                </tr>
+                            </thead>
+                        </table>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary upload" id="upload">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </form>
-
 
     <button type="submit" class="btn btn-primary upload" id="upload">upload</button>
 

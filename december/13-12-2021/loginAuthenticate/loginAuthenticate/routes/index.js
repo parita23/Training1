@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 const userModel = require("../models/userModel");
 const fileModel = require("../models/fileModel");
+const fieldModel = require("../models/fieldModel");
 const jwt = require("jsonwebtoken");
 const { check } = require("express-validator");
 const { Parser } = require("json2csv");
@@ -86,34 +87,55 @@ router.get("/getAllUsers", authJWT, async function (req, res, next) {
   });
 });
 //importing the csv to json data and for that we first upload our file to the public folder file
-router.post("/import", authJWT, upload.single("file"), async (req, res) => {
+router.post("/import",  authJWT, upload.single("file"), async (req, res) => {
   try {
     //in if we get the user.userId from loginApi and generate in authjWt
+
     if (req.file) {
       const temp = {
         name: req.file.filename,
         uploadedBy: req.user.userId,
       };
       var data = await fileModel.create(temp);
+
+      //in below array we have already in our database
+      let dbfields = ["name", "email", "mobile"];
+      //in this we find all the new fields added in fieldModel
+      let allField = await fieldModel.find();
+      //map method take array of object
+      allField = allField.map(function(field){
+        return field.field
+      })
+      //we concat our field array and (name,email,mobile) array 
+      let alldbFields = dbfields.concat(allField);
      
       //csvFilePath is get the path of file which is upload in one file
       const csvFilePath = req.file.destination + "/" + req.file.filename;
       
       //in jsonArray we get our json file
-      const jsonArray = await csv().fromFile(csvFilePath);
+      const jsonArray = await csv({noheader : true}).fromFile(csvFilePath);
+      console.log("jsonArray..")
 
       if (jsonArray) {
-        let firstRow = Object.keys(jsonArray[0]);
-        let secondRow = Object.values(jsonArray[0]);
-
+        let fields = Object.keys(jsonArray[0]);
+        let firstRow = Object.values(jsonArray[0]);
+        console.log("firstRow.",firstRow)
+        let secondRow = Object.values(jsonArray[1]);
+        console.log("secondRow.",secondRow)
+       
+        console.log(allField,"allfield by jim");
         res.send({
           type: "success",
           firstRow: firstRow,
+          fields : fields,
           secondRow: secondRow,
+          alldbFields : alldbFields,
           id: data._id,
+         
         });
       }
     } else {
+      console.log("rt5t55r3ft")
       res.json({
         status: "error",
         code: 404,
@@ -121,6 +143,7 @@ router.post("/import", authJWT, upload.single("file"), async (req, res) => {
       });
     }
   } catch (error) {
+  console.log(error)
     res.json({
       status: "error",
       code: 404,
@@ -131,7 +154,8 @@ router.post("/import", authJWT, upload.single("file"), async (req, res) => {
 
 //mapping route for compare database and csv field
 ///mapping/:data in data we get id from ajax and access as req.params
-router.post("/mapping/:data", authJWT, async (req, res) => {
+router.post("/mapping/:data/:checkValue", authJWT, async (req, res) => {
+  console.log("andar aave")
   try {
     let validUser = 0;
     let invalidUser = 0;
@@ -139,62 +163,59 @@ router.post("/mapping/:data", authJWT, async (req, res) => {
     let discarded = 0;
     let totalRecords = 0;
     let finalUser = [];
+    let jsonArray;
+    console.log("req.body...",req.body)
     //we find which file is uploaded (Id)
     let result = await fileModel.findOne({ _id: req.params.data });
    //find the csv path from public folder
     const csvFilePath = "./public/importFile/" + result.name;
-  
-    //in jsonArray we get our json file
-    const jsonArray = await csv().fromFile(csvFilePath);
-    
-    if (jsonArray) {
-      for (let user of jsonArray) {
-        //we find totalRecords in csv
-        totalRecords++;
-        //we take one email regExpression for checking valid field data or not
-        var emailRegExpression = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-        //we check name,email and mobile exist in csv or not
-        if (user.name && user.email && user.mobile) {
 
-          //if we get that data from database then go to  as duplicate
-          let data = await userModel.findOne({
-            $or: [{ email: user.email }, { mobile: user.mobile }],
-          });
-         
-          if (data) {
-            duplicateUser++;
-  
-          } else if (
-            //we check in name there is any unwanted character is there if yes then name is invalid and go to discarded
-            emailRegExpression.test(req.body.name) == true ||
-            req.body.name == null ||
-            req.body.name == ""
-          ) {
-            
-            discarded++;
-          } else if (emailRegExpression.test(req.body.email) == false) {
-            //check email regExpression is valid
-            
-            discarded++;
-          } else if (
-            //check mobile number length is exactly 10 or not
-            req.body.mobile.length < 10 ||
-            req.body.mobile.length > 10
-          ) {
-            discarded++;
-          } else {
-      //if our data is proper then go to as valid user
-            validUser++;
-            let userObj = {};
-            //creating mapping fields for check our database field match to csv fields
-            userObj[req.body.name] = user.name;
-            userObj[req.body.email] = user.email;
-            userObj[req.body.mobile] = user.mobile;
-            finalUser.push(userObj);
-          }
-        } else {
+    console.log("csvFilePath.....",csvFilePath)
+
+    console.log("11111111111111111111111111111")
+    //in jsonArray we get our json file
+    jsonArray = await csv({noheader:true}).fromFile(csvFilePath);
+    // console.log("jsonArray147...",jsonArray)
+    console.log("req.body..147852",req.body)
+    if(req.params.checkValue == "true"){
+      jsonArray=jsonArray.slice[1]
+      console.log("req.params...",req.params)
+      // console.log("jsonArray......",jsonArray)
+      var skipVal = await fileModel.updateOne({_id:req.params.data},{$set:{skipFirstRow:"true",fieldMappingObject:req.body}})
+      console.log("skipVal..",skipVal)
+    }
+    let fieldMap = req.body;
+    if (jsonArray) {
+      console.log("nnnnnnnnnnnnnn",jsonArray)
+      for (let user of jsonArray) {
+          
+        let name = user[fieldMap['name']]
+        let email = user[fieldMap['email']]
+        let mobile = user[fieldMap['mobile']]
+
+        if(name && email && mobile){
+
+            let userData = await userModel.findOne({$or : [{email : email}, {mobile : mobile}]});
+            if(userData)
+            {
+              duplicateUser++;
+            }else{
+              validUser++;
+              let userObj = {} 
+              for (const field in fieldMap) {
+                userObj[field] = user[fieldMap[field]];
+              }
+              finalUser.push(userObj);
+            }
+
+
+        }else{
           invalidUser++;
         }
+
+
+
+       
       }
       //find total uploaded user which is clean
       let uploadedUsers = await userModel.insertMany(finalUser);
@@ -218,6 +239,7 @@ router.post("/mapping/:data", authJWT, async (req, res) => {
           data: demo,
         });
       } else {
+        console.log("error..")
         res.json({
           status: "error",
           code: 404,
@@ -226,6 +248,7 @@ router.post("/mapping/:data", authJWT, async (req, res) => {
       }
     }
   } catch (error) {
+    console.log("Error",error)
     res.json({
       status: "error",
       code: 404,
@@ -234,6 +257,39 @@ router.post("/mapping/:data", authJWT, async (req, res) => {
   }
 });
 
+//add field route
+
+router.post("/fieldAdd",authJWT,async (req, res) => {
+    try {
+     console.log("andar...................")
+
+     let mybodydata = {
+      field:req.body.field
+    };
+         
+     
+      console.log("mybodydata....",mybodydata)
+      var fieldResult= await fieldModel(mybodydata).save();
+
+
+      let allData = await fieldModel.find().lean();
+      // console.log("data1,",fieldResult)
+      console.log("allData..,",allData)
+      if (allData) {
+        res.send({
+          type: "success",
+          result: allData
+        });
+      }else{
+        console.log("error to save the data")
+      }
+
+      
+    } catch (error) {
+      console.log("errorrrr", error)
+    }
+  }
+);
 //signup
 router.post(
   "/signup",
@@ -364,5 +420,7 @@ router.get("/logout", async (req, res) => {
     });
   }
 });
+
+
 
 module.exports = router;

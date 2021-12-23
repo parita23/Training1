@@ -5,8 +5,13 @@ const tableSchema = new mongoose.Schema(
     name: {
       type: String,
     },
-    fieldMappingObject: {
+    skipFirstRow: {
       type: String,
+      default:"false"
+    },
+    fieldMappingObject: {
+      type: Object,
+      default:null
     },
     totalRecords: {
       type: String,
