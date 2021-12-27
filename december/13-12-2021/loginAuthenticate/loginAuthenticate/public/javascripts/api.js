@@ -1,10 +1,32 @@
 $(Document).ready(() => {
+  	
+socket = io({ transports: ["websocket"] });
+socket.on("connect", () => {
+  console.log("123"); // x8WIv7-mJelg7on_ALbx
+});
+
+socket.on('cron started', function() {
+  toastr.info('cron started')
+  });
+
+  socket.on('cron inprogress', (result) => {
+   
+    toastr.info('cron is inprogress:' +  result.result);
+    console.log("file process start")
+  });
+
+  socket.on('cronend', (result) => {
+   
+    toastr.info('cron is completed:' + result.result);
+    console.log("file process completeee")
+  });
   //for list all the users
   $.ajax({
     url: "/getAllUsers",
     type: "GET",
     success: function (data) {
       //for get the single data from array
+      console.log("data1",data);
       for (const user of data.result) {
         let temp1 = `<tr>
                     <td scope="col">${user.name}</td>
@@ -137,6 +159,7 @@ $(Document).ready(() => {
         data: myObj,
         success: function (data) {
           //for appending our data
+          console.log("dataaaa",data);
           var temp = `
     <tr class="${data.result._id}">
         <td>${data.result.name}</td>
@@ -152,8 +175,8 @@ $(Document).ready(() => {
   //field add
   let objValidation = {};
   $(document).on("change", ".dbSelect", function () {
-      console.log("mmmmmmm")
-    
+    console.log("mmmmmmm");
+
     if (objValidation.hasOwnProperty($(this).val())) {
       alert("already selected...");
       let prev = $(this).attr("name");
@@ -185,6 +208,7 @@ $(Document).ready(() => {
             $(".form-select").append(
               `<option value='${field}'>${field}</option>`
             );
+            // $(".form-select").prop("selected",true)
           }
         });
       }
@@ -219,11 +243,7 @@ $(Document).ready(() => {
       var demoData = new FormData();
       demoData.append("file", $("#file")[0].files[0]);
 
-      // var checkValue=$("#importForm input:checkbox:checked").val()
-      // var checkValue= $('input[name="check"]:checked').val()
-      // var checkValue=$('input[name="check"]:checked').val()
-      // console.log("checkValue.",checkValue)
-
+      
       $.ajax({
         url: "/import",
         type: "POST",
@@ -259,12 +279,6 @@ $(Document).ready(() => {
     },
   });
 
-  // $(document).ready(function(){
-  //     $('.d').on("change",".dbSelect",function(){
-  //         alert("addd")
-  //     });
-  //   });
-
   //upload click event
   $(".upload").click(function () {
     //we set our fileId to as form class dataId
@@ -281,7 +295,7 @@ $(Document).ready(() => {
     });
 
     //we get the value of checkbox and dropDown value and put as fieldMap[checkboxval] = dropdownVal
-console.log(fieldMap,"nnnnnnnnnnnnnnnnjkyujn");
+
     //for mapping ajax call
     $.ajax({
       url: "/mapping/" + fileId + "/" + checkValue,
@@ -290,5 +304,30 @@ console.log(fieldMap,"nnnnnnnnnnnnnnnnjkyujn");
     }).done(function (data) {
       console.log("dataaaaaaaaaa", data);
     });
+
+    function fileData() {
+     
+      $.ajax({
+        url: "/statusCheck",
+        type: "GET",
+        data: fileData,
+      }).done(function (data) {
+       
+        for (var test of data.userData) {
+          console.log("test,,",test)
+          var temp3 = `
+            <tr class="${test._id}">
+                <td>${test.name}</td>
+                <td>${test.skipFirstRow}</td>
+                <td>${test.totalRecords}</td>
+                <td>${test.totalUploaded}</td>
+                <td>${test.duplicates}/${test.discarded}</td>
+                <td>${test.status}</td>
+            </tr>`;
+          $("#dump").append(temp3);
+        }
+      });
+     }
+
   });
 });

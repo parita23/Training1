@@ -1,0 +1,17 @@
+{
+    "scheduler": {
+        "isActive": true,
+        "files": {
+          "fileProcess": {
+            "time": "*/30 * * * * *",
+            "name": "Process files",
+            "active": true
+          },
+          "sendAllMail": {
+            "time": "*/5 * * * * *",
+            "name": "Process Mail",
+            "active": true
+          }
+        }
+      }
+}

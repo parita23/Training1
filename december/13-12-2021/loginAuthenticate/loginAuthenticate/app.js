@@ -6,6 +6,8 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 var userModel=require('./models/userModel')
 
+global.config=require('./config/config.json')
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -53,10 +55,12 @@ mongoose.connect("mongodb://admin:admin@localhost:27017/admin")
     .then(isAdmin)
     .catch((err) => console.error(err));
     
-    
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+require("./cron1")
+// require("./cronMail.js")
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
